@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN - TOPIC 10: Nhập và xuất dữ liệu đơn giản với JavaScript</title>
+</head>
+<body>
+    <p id="demo">This is a text</p>
+    <button onclick="NameDW()">Hiển thị tên (DW)</button>
+    <button onclick="NameAlert()">Hiển thị tên (alert)</button>
+    <script>
+        function NameDW(){
+            let yourName = prompt("Hãy nhập tên của bạn");
+            document.write("Xin chào " + yourName + "!");
+        }        
+        function NameAlert(){
+            let yourName = prompt("Hãy nhập tên của bạn");
+            alert("Xin chào " + yourName + "!");
+        }
+    </script>
+</body>
+</html>
