@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập HTML DOM</title>
+    <style>
+        button {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="show-message">This is a text</div>
+    <br>
+    <button onclick="showMessageAlert()">Bài 1: Sử dụng alertL</button>
+    <button onclick="showMessage()">Bài 2: Sử dụng thẻ HTML</button>
+    <button onclick="showMessageDW()">Bài 3: Sử dụng DW</button>
+    <button onclick="showMessageConL()">Bài 4: Sử dụng console</button>
+
+    <script>
+        function showMessageAlert(){
+            alert('Hello');
+        }
+        function showMessage(){
+            document.getElementById("show-message").innerHTML = "Xin chào!"
+        }
+        function showMessageDW(){
+            document.write('Xin chào DW!')
+        }
+        function showMessageConL(){
+            console.log("Hi! I'm console.log!")
+        }
+    </script>
+</body>
+</html>
