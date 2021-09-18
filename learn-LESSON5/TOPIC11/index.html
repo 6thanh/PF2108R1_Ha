@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 5 -TOPIC 11 (Khai báo và sử dụng biến)</title>
+</head>
+
+<body>
+    <button onclick="declareVar()">Bài 1: Khai báo biến</button>
+    <button onclick="areaRectangle()">Bài 2: Diện tích hình chữ nhật</button>
+    <button onclick="checkNumber()">Bài 3: Kiểm tra bội số</button>
+    <script>
+        function declareVar() {
+            let i = 10;
+            let f = 20.5;
+            let b = true;
+            let s = "Hà Nội";
+            document.write('i = ' + i);
+            document.write('<br>');
+            document.write('f = ' + f);
+            document.write('<br>');
+            document.write('b = ' + b);
+            document.write('<br>');
+            document.write('s = ' + s);
+        }
+
+        function areaRectangle() {
+            let width = prompt('Hãy nhập chiều rộng');
+            let height = prompt('Hãy nhập chiều cao');
+            let area = width * height;
+            document.write('Diện tích hình chữ nhật = ' + area);
+        }
+
+        function checkNumber() {
+            let a = prompt('Hãy nhập số a');
+            let b = prompt('Hãy nhập số b');
+            let c = a % b;
+            if (c == 0)
+                alert('a là bội số của b');
+            else
+                alert('a không chia hết cho b');
+        }
+    </script>
+</body>
+
+</html>
