@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: Quiz 1 of 41 (Tính chu vi và diện tích hình tròn)</title>
+</head>
+
+<body>
+    <h2>Nhập bán kính của hình tròn và tìm đường kính, chu vi và diện tích của hình tròn.</h2>
+    <button onclick="area()">Nhập bán kính hình tròn</button>
+    <script>
+        function area() {
+            let r = prompt('Hãy nhập bán kính hình tròn');
+            const PI = 3.14;
+            let d = r * 2;
+            let C = r * 2 * PI;
+            let S = r ** 2 * PI;
+            document.write('Đường kính hình tròn là: ' + d);
+            document.write('<br>');
+            document.write('Chu vi hình tròn là: ' + C);
+            document.write('<br>');
+            document.write('Diện tích hình tròn là: ' + S);
+        }
+    </script>
+</body>
+
+</html>
