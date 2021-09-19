@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: Quiz 1 of 41 (Tính lãi suất ngân hàng)</title>
+</head>
+
+<body>
+    <p>Tính lãi suất ngân hàng theo công thức tính lãi đơn</p>
+    <button onclick="bankInterest()">Tính lãi suất ngân hàng</button>
+    <script>
+        function bankInterest() {
+            var money = prompt('Số tiền gửi tiết kiệm (Vnđ)');
+            var interest = prompt('Lãi suất tiết kiệm (%/năm)');
+            var n = prompt('Thời gian gửi (đơn vị tính: năm)');
+            money = parseFloat(money);
+            interest = parseFloat(interest);
+            n = parseFloat(n);
+            let interestYear = money * interest/100;
+            let totalMoney = interestYear * n + money;
+            document.write('Số tiền được nhận sau ' + n + ' năm là: ' + totalMoney + ' Vnđ');
+        }
+    </script>
+</body>
+
+</html>
