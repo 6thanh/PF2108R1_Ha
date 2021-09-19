@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 5 - TOPIC 12 (Sử dụng toán tử)</title>
+</head>
+
+<body>
+    <h2>Viết một ứng dụng để tính diện tích của hình chữ nhật dựa vào chiều rộng và chiều cao được nhập vào.</h2>
+    <button onclick="areaRectangular()">Tính diện tích hình chữ nhật</button>
+    <script>
+        function areaRectangular() {
+            let inputWidth;
+            let inputHeight;
+            inputWidth = prompt('Hãy nhập chiều rộng');
+            inputHeight = prompt('Hãy nhập chiều cao');
+            parseInt(inputWidth);
+            parseInt(inputHeight);
+            let area = inputWidth * inputHeight;
+            document.write("Diện tích hình chữ nhật = " + area);
+        }
+    </script>
+</body>
+
+</html>
