@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: Quiz 1 of 41 (Ứng dụng máy tính)</title>
+    <style>
+        .calculatorForm {
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Calculator</h1>
+    <form class="calculatorForm" action="#" method="POST">
+        <input type="text" name="firstNumber" id="firstNumber" placeholder="Số thứ nhất">
+        <input type="text" name="secondNumber" id="secondNumber" placeholder="Số thứ hai">
+    </form>
+    <br>
+    <button onclick="plusButton()">Addition(+)</button>
+    <button onclick="subButton()">Subtraction(-)</button>
+    <button onclick="multiButton()">Multiplication(X)</button>
+    <button onclick="divButton()">Division(/)</button>
+    <br>
+    <h4 id="message">Result</h4>
+
+    <script>
+        let firstNumber, secondNumber;
+        let message = document.getElementById('message')
+
+        function plusButton() {
+            firstNumber = parseFloat(document.getElementById('firstNumber').value);
+            secondNumber = parseFloat(document.getElementById('secondNumber').value);
+            message.innerHTML = "Result Plus :" + (firstNumber+secondNumber);
+        }
+
+        function subButton() {
+            firstNumber = parseFloat(document.getElementById('firstNumber').value);
+            secondNumber = parseFloat(document.getElementById('secondNumber').value);
+            message.innerHTML = "Result Subtraction :" + (firstNumber-secondNumber);
+        }
+
+        function multiButton() {
+            firstNumber = parseFloat(document.getElementById('firstNumber').value);
+            secondNumber = parseFloat(document.getElementById('secondNumber').value);
+            message.innerHTML = "Result Multiplication :" + (firstNumber*secondNumber);
+        }
+
+        function divButton() {
+            firstNumber = parseFloat(document.getElementById('firstNumber').value);
+            secondNumber = parseFloat(document.getElementById('secondNumber').value);
+            message.innerHTML = "Result Division :" + (firstNumber/secondNumber);
+        }
+    </script>
+    
+
+</body>
+
+</html>
