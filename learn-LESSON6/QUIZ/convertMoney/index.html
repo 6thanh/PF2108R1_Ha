@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyển đổi tiền</title>
+    <style>
+        .tableChange {
+            border: 1px solid blue;
+            border-collapse: collapse;
+            width: 50%;
+            margin: auto;
+        }
+        #convert {
+            border: 1px solid #6e88e4;
+            background: #8f82cf;
+            color: white;
+            font-weight: bold;
+        }
+        select:focus{
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="tableChange">
+        <tr>
+            <th>Amount</th>
+            <th>From Currency</th>
+            <th>To Currency</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="amount" id="amount" placeholder="Nhập số tiền">
+            </td>
+            <td>
+                <select id="fromCurrency">
+                    <option disabled selected value="0">-- Choose Currency --</option>
+                    <option value="1.38">AUD</option>
+                    <option value="110.10">JPY</option>
+                    <option value="22771">VND</option>
+                    <option value="1">USD</option>
+                </select>
+            </td>
+            <td>
+                <select id="toCurrency">
+                    <option disabled selected value="0">-- Choose Currency --</option>
+                    <option value="1.38">AUD</option>
+                    <option value="110.10">JPY</option>
+                    <option value="22771">VND</option>
+                    <option value="1">USD</option>
+                </select>
+            </td>
+            <td>
+                <button id="convert">Convert</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <h4 id="message">Result</h4>
+            </td>
+        </tr>
+    </table>
+    <script>
+        document.getElementById("convert").addEventListener('click', function () {
+            let amount = parseFloat(document.getElementById("amount").value);
+            let fromCurrency = document.getElementById("fromCurrency").value;
+            let toCurrency = document.getElementById("toCurrency").value;
+            let resultCurrency = (amount / fromCurrency) * toCurrency;
+            //alert(resultCurrency);
+            console.log(resultCurrency);
+            //document.write(resultCurrency);
+            document.getElementById("message").innerHTML = "Result : " + resultCurrency;
+        });
+    </script>
+</body>
+
+</html>
