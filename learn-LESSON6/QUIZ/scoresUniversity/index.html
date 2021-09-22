@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: Quiz 1 of 47 (Tính điểm Đại học khối D)</title>
+</head>
+
+<body>
+    <h1>Tính điểm Đại học khối D</h1>
+    <table>
+        <tr>
+            <td>Môn Toán</td>
+            <td><input type="number" name="mathScore" id="mathScore"></td>
+        </tr>
+        <tr>
+            <td>Môn Văn</td>
+            <td><input type="number" name="literatureScore" id="literatureScore"></td>
+        </tr>
+        <tr>
+            <td>Môn Anh</td>
+            <td><input type="number" name="englishScore" id="englishScore"></td>
+        </tr>
+        <tr>
+            <td>Khu vực</td>
+            <td>
+                <select name="AreaPlus" id="areaPlus">
+                    <option disabled selected value="0">-- Chọn khu vực --</option>
+                    <option value="0.75">KV1</option>
+                    <option value="0.25">KV2</option>
+                    <option value="0.5">KV2-NT</option>
+                    <option value="0">KV3</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button id="scoresUniversity">Tính điểm</button>
+            </td>
+        </tr>
+    </table>
+    <p id="result">Kết quả</p>
+
+    <script>
+        document.getElementById('scoresUniversity').addEventListener('click', function () {
+            let mathScore = parseFloat(document.getElementById('mathScore').value);
+            let literatureScore = parseFloat(document.getElementById('literatureScore').value);
+            let englishScore = parseFloat(document.getElementById('englishScore').value);
+            let plusScore = parseFloat(document.getElementById('areaPlus').value);
+            let result = document.getElementById('result');
+            let totalScore = mathScore + literatureScore + englishScore;
+
+            switch (plusScore) {
+                case 0.75:
+                    result.innerHTML = 'Tổng điểm ĐH khối D của bạn là ' + (totalScore + 0.75);
+                    break;
+                case 0.5:
+                    result.innerHTML = 'Tổng điểm ĐH khối D của bạn là ' + (totalScore + 0.5);
+                    break;
+                case 0.25:
+                    result.innerHTML = 'Tổng điểm ĐH khối D của bạn là ' + (totalScore + 0.25);
+                    break;
+                default :
+                    result.innerHTML = 'Tổng điểm ĐH khối D của bạn là ' + (totalScore + 0);
+            }
+
+            console.log(totalScore);
+        });
+    </script>
+
+</body>
+
+</html>
