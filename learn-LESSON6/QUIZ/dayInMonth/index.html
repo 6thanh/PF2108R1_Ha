@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: Quiz 1 of 47 (Tính số ngày trong một tháng)</title>
+</head>
+
+<body>
+    <h1>Tính số ngày trong một tháng</h1>
+    <input type="number" id="month" placeholder="Nhập tháng cần kiểm tra">
+    <button onclick="dayInMonth()">Tính số ngày</button>
+    <p id="message">Số ngày trong tháng:</p>
+
+    <script>
+        let month = document.getElementById('month');
+        let message = document.getElementById('message');
+
+        function dayInMonth() {
+            let daynumber = parseInt(month.value);
+            console.log(daynumber);
+            switch (daynumber) {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    message.innerText = "Tháng " + daynumber + " có 31 ngày";
+                    break;
+                case 2:
+                    message.innerText = "Tháng " + daynumber + " có 28 hoặc 29 ngày";
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    message.innerText = "Tháng " + daynumber + " có 30 ngày";
+                    break;
+                default:
+                    alert('Không có tháng này trong năm');
+            }
+        }
+    </script>
+</body>
+
+</html>
