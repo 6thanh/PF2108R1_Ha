@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEAR: Quiz 1 of 41 (Tank Game)</title>
+    <style>
+        *{box-sizing: border-box;}
+        .arena {
+            width: 190px;
+            height: 190px;
+            background: black;
+            border: 1px solid yellowgreen;
+        }
+        #tank {
+            width: 19px;
+            height: 19px;
+            position: relative;
+            top: 0px;
+            left: 0px;
+        }
+        button img {
+            width: 19px;
+            height: 19px;
+            padding-top: 1px;            
+        }       
+        .buttonBtn {
+            width: 95px;
+            height: 95px;
+            background: grey;
+            position: relative;
+        }
+        #topBtn {
+            transform: rotate(180deg);
+            position: absolute;
+            top: 0px;
+            left: 30px;
+        }
+        #bottomBtn {            
+            position: absolute;
+            bottom: 0px;
+            left: 30px;
+        }
+        #leftBtn {
+            transform: rotate(90deg);
+            position: absolute;
+            top: 32px;
+            left: -5px;
+        }
+        #rightBtn {
+            transform: rotate(270deg);
+            position: absolute;
+            top: 32px;
+            right: -5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ứng dụng trò chơi xe tăng 1</h1>
+    <div class="arena">
+        <img src="tank.png" alt="tank" id="tank">
+    </div>
+    <br>
+    <div class="buttonBtn">
+        <button id="topBtn"><img src="bottom.jpg" alt="TOP"></button>
+        <button id="bottomBtn"><img src="bottom.jpg" alt="BOTTOM"></button>
+        <button id="leftBtn"><img src="bottom.jpg" alt="LEFT"></button>
+        <button id="rightBtn"><img src="bottom.jpg" alt="RIGHT"></button>
+    </div>    
+
+    <script>
+        var x = y = 0;
+
+        document.getElementById('topBtn').addEventListener('click', function () {
+            if (y > 0) {
+                y -= 19;
+                document.getElementById('tank').style.top = y + "px";
+            }
+            else {
+                alert('you lose');
+            }
+        });
+        document.getElementById('bottomBtn').addEventListener('click', function () {
+            if (y < 171) {
+                y += 19;
+                document.getElementById('tank').style.top = y + "px";
+            }
+            else {
+                alert('you lose');
+            }
+        });
+        document.getElementById('rightBtn').addEventListener('click', function () {
+            if (x < 171) {
+                x += 19;
+                document.getElementById('tank').style.left = x + "px";
+            }
+            else {
+                alert('you lose');
+            }
+        });
+        document.getElementById('leftBtn').addEventListener('click', function () {
+            if (x > 0) {
+                x -= 19;
+                document.getElementById('tank').style.left = x + "px";
+            }
+            else {
+                alert('you lose');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

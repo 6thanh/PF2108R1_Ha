@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: Quiz 1 of 47 (Kiểm tra số chẵn)</title>
+    <style>
+        .testNumber {
+            width: 50%;
+            height: 3em;
+            line-height: 3em;
+            background: burlywood;
+            margin: auto;
+        }
+
+        .testNumber #inputNumber:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Kiểm tra số chẵn, lẻ</h1>
+    <div class="testNumber">
+        <input type="number" id="inputNumber" name="number" placeholder="Nhập số cần kiểm tra">
+        <button id="checkNumber">Check Number</button>
+        <p id="result">Kết quả</p>
+    </div>
+
+    <script>
+        document.getElementById('checkNumber').addEventListener('click', function () {
+            let inputNumber = parseFloat(document.getElementById('inputNumber').value);
+            let a = inputNumber % 2;
+            let testNum = parseInt(inputNumber);
+
+            if (testNum === inputNumber) {
+                if (a == 0) {
+                    document.getElementById('result').innerHTML = 
+                        'Số ' + inputNumber + ' là số chẵn';
+                } else {
+                    document.getElementById('result').innerHTML = 
+                        'Số ' + inputNumber + ' là số lẻ';
+                }
+            } else {
+                alert('Số ' + inputNumber +
+                    ' không phải là số nguyên, không kiểm tra chẵn lẻ');
+            }
+        });
+    </script>
+</body>
+
+</html>
