@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: Quiz 1 of 47 (Tra cứu giá hoa quả)</title>
+    <style>
+        .all {
+            width: 50%;
+            background: burlywood;
+            margin: auto;
+        }
+
+        #result {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="all">
+        <h1>Tra cứu giá hoa quả</h1>
+        <select name="priceFruit" id="priceFruit">
+            <option disabled selected value="0">-- Chọn 1 loại --</option>
+            <option value="quaOi">Ổi</option>
+            <option value="duaHau">Dưa Hấu</option>
+            <option value="quaTao">Táo</option>
+            <option value="quaXoai">Xoài</option>
+            <option value="quaCam">Cam</option>
+            <option value="chomChom">Chôm Chôm</option>
+            <option value="mangCut">Măng cụt</option>
+        </select>
+        <button id="loopkup">Xem giá</button>
+        <p id="result">Giá</p>
+    </div>
+
+    <script>
+        document.getElementById('loopkup').addEventListener('click', function () {
+            let priceFruit = document.getElementById('priceFruit').value;
+            let result = document.getElementById('result');
+            
+            switch (priceFruit) {
+                case 'quaOi':
+                case 'duaHau':
+                    result.innerHTML = 'Giá : 20000 VNĐ/kg';
+                    break;
+                case 'quaTao':
+                case 'quaXoai':
+                    result.innerHTML = 'Giá : 30000 VNĐ/kg';
+                    break;
+                case 'quaCam':
+                case 'chomChom':
+                    result.innerHTML = 'Giá : 40000 VNĐ/kg';
+                    break;
+                case 'mangCut':
+                    result.innerHTML = 'Giá : 50000 VNĐ/kg';
+                    break;
+                default:
+                    alert('Vui lòng nhập lại');
+            }
+            console.log(priceFruit);
+        });
+    </script>
+
+</body>
+
+</html>
