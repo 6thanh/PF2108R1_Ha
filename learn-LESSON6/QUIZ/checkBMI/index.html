@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: Quiz 1 of (Tính chỉ số cân nặng của cơ thể)</title>
+    <style>
+        .all {
+            width: 50%;
+            height: 3em;
+            line-height: 3em;
+            background: burlywood;
+            margin: auto;
+        }
+
+        #result {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tính chỉ số cân nặng của cơ thể</h1>
+    <button onclick="start()">Start</button>
+    <div class="all">
+        <p id="result">Kết quả</p>
+    </div>
+
+    <script>
+        function start() {
+
+            let height = prompt('Hãy nhập vào chiều cao (m)');
+            let weight = prompt('Hãy nhập vào cân nặng (kg)');
+            height = parseFloat(height);
+            weight = parseFloat(weight);
+            let BMI = weight / (height ** 2);
+
+            console.log(BMI);
+            if (BMI < 1) {
+                alert('Hãy nhập lại chiều cao (m) và cân nặng (kg)')
+            } else {
+                if (BMI < 16) {
+                    document.getElementById('result').innerHTML = 'Gầy độ III';
+                    document.getElementById('result').style.color = 'green';
+                } else {
+                    if (BMI < 17) {
+                        document.getElementById('result').innerHTML = 'Gầy độ II';
+                        document.getElementById('result').style.color = 'green';
+                    } else {
+                        if (BMI < 18.5) {
+                            document.getElementById('result').innerHTML = 'Gầy độ I';
+                            document.getElementById('result').style.color = 'green';
+                        } else {
+                            if (BMI < 25) {
+                                document.getElementById('result').innerHTML = 'Bình thường';
+                                document.getElementById('result').style.color = 'blue';
+                            } else {
+                                if (BMI < 30) {
+                                    document.getElementById('result').innerHTML = 'Thừa cân';
+                                    document.getElementById('result').style.color = 'blue';
+                                } else {
+                                    if (BMI < 35) {
+                                        document.getElementById('result').innerHTML = 'Béo phì độ I';
+                                        document.getElementById('result').style.color = 'red';
+                                    } else
+                                    if (BMI < 40) {
+                                        document.getElementById('result').innerHTML = 'Béo phì độ II';
+                                        document.getElementById('result').style.color = 'red';
+                                    } else
+                                        document.getElementById('result').innerHTML = 'Béo phì độ III';
+                                        document.getElementById('result').style.color = 'red';
+                                        document.getElementById('result').style.fontSize = '30px';
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
