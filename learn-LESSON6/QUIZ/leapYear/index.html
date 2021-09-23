@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: Quiz 1 of 47 (Kiểm tra năm nhuận)</title>
+</head>
+
+<body>
+    <h1>Kiểm tra năm nhuận</h1>
+    <input type="number" id="leapYear" name="LeapYear" placeholder="Năm cần kiểm tra">
+    <button id="checkLeapYear">Trả lời</button>
+    <p id="result">Kết quả</p>
+
+
+    <input type="number" id="year" name="year" placeholder="Enter a year">
+    <button onclick="checkYear()">Check</button>
+    <p id="message">Kết quả</p>
+
+    <script>
+        document.getElementById('checkLeapYear').addEventListener('click', function () {
+            let leapYear = parseFloat(document.getElementById('leapYear').value);
+            let result = document.getElementById("result");
+            let testYear = parseInt(leapYear);
+            if (testYear != leapYear) {
+                alert('Vui lòng nhập đúng số năm');
+            } else {
+                let a = leapYear % 4;
+                let b = leapYear % 100;
+                let c = leapYear % 400;
+                //console.log(a); console.log(b); console.log(c); 
+
+                if (a == 0 & b != 0) {
+                    result.innerHTML = 'Năm ' + leapYear + ' là năm nhuận';
+                } else if (b = c == 0) {
+                    result.innerHTML = 'Năm ' + leapYear + ' là năm nhuận';
+                } else {
+                    result.innerHTML = 'Năm ' + leapYear + ' không phải là năm nhuận';
+                }
+            }
+        });
+
+        function checkYear() {
+            let year = parseInt(document.getElementById("year").value);
+            let message = document.getElementById("message");
+
+            if (year % 4 == 0) {
+                if (year % 100 == 0) {
+                    if (year % 400 == 0) {
+                        message.innerHTML = year + " is a leap year";
+                    } else {
+                        message.innerHTML = year + " is NOT a leap year";
+                    }
+                } else {
+                    message.innerHTML = year + " is a leap year";
+                }
+            } else {
+                message.innerHTML = year + " is NOT a leap year";
+            }
+        }
+    </script>
+</body>
+
+</html>
