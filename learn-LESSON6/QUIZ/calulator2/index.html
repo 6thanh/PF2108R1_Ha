@@ -49,22 +49,26 @@
         <button id="numOne">1</button>
         <button id="numTwo">2</button>
         <button id="numThree">3</button>
-        <button id="summation">+</button>
+        <button class="operator" id="+">+</button>
+
         <button id="numFour">4</button>
         <button id="numFive">5</button>
         <button id="numSix">6</button>
-        <button id="subtraction">-</button>
+        <button class="operator" id="-">-</button>
+
         <button id="numSeven">7</button>
         <button id="numEight">8</button>
         <button id="numNine">9</button>
-        <button id="multiplication">x</button>
+        <button class="operator" id="*">x</button>
+
         <button id="numClear">C</button>
         <button id="numZero">0</button>
         <button id="numEqual">=</button>
-        <button id="division">/</button>
+        <button class="operator" id="/">/</button>
     </div>
 
     <script>
+        
         
         document.getElementById('numOne').addEventListener('click', function(){            
             let addOne = document.createTextNode(1);
@@ -77,6 +81,12 @@
         document.getElementById('numThree').addEventListener('click', function(){
             let addThree = document.createTextNode(3);
             document.getElementById('screen').appendChild(addThree);
+        });
+
+        document.getElementsByClassName('operator').addEventListener('click', function(){
+            let operator = document.getElementById('screen').innerText + 
+            document.getElementById('');
+            console.log(operator);
         });
     </script>
 </body>

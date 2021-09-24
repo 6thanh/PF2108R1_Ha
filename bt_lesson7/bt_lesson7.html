@@ -1,32 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bài tập: lesson 7</title>
+    <style>
+        button {
+            margin: 20px auto;
+        }
+    </style>
 </head>
+
 <body>
     /*
-    Bài 1. Phương trình bậc nhất một ẩn là phương trình có dạng ax + b = 0 với a # 0, nghiệm của hàm này là x = -b/a. Lưu ý: Cần bắt hết các trường hợp của a,b
-    Bài 2. Viết chương trình cho người dùng nhập vào một số, kiểm tra xem số đó là số nguyên dương hay là số nguyên âm, hoặc không phải số nguyên. Gợi ý: Sử dụng isInteger()
-    Bài 3. Viết chương trình hiển thị thời gian hiện tại, sử dụng Date trong Javascript. Ví dụ hiển thị thông báo: Bây giờ là 20 giờ 20 phút 20 giây, thứ 4 ngày 15 tháng 9 năm 2021. Gợi ý: var currentTime = new Date();
+    Bài 1. Phương trình bậc nhất một ẩn là phương trình có dạng ax + b = 0 với a # 0, nghiệm của hàm này là x = -b/a.
+    Lưu ý: Cần bắt hết các trường hợp của a,b
+    Bài 2. Viết chương trình cho người dùng nhập vào một số, kiểm tra xem số đó là số nguyên dương hay là số nguyên âm,
+    hoặc không phải số nguyên. Gợi ý: Sử dụng isInteger()
+    Bài 3. Viết chương trình hiển thị thời gian hiện tại, sử dụng Date trong Javascript. Ví dụ hiển thị thông báo: Bây
+    giờ là 20 giờ 20 phút 20 giây, thứ 4 ngày 15 tháng 9 năm 2021. Gợi ý: var currentTime = new Date();
     Bài 4. Viết chương trình chuyển đổi ngày tháng năm hiện tại thành milisecond.
     */
-    <button onclick="firstEquation()">Bài 1: Phương trình bậc nhất</button> <br>
-    <button onclick="checkInterger()">Bài 2: Check Number</button> <br>
+    <br>
+    <button onclick="firstEquation()">Bài 1: Phương trình bậc nhất (ax+b=0)</button> <br>
+    <button onclick="checkInterger()">Bài 2: Check Integer</button> <br>
     <button onclick="displayTime()">Bài 3: Hiển thị thời gian</button> <br>
     <button onclick="changeTime()">Bài 4: Thay đổi thời gian thành milisecond</button> <br>
     <p id="demo"></p>
+    
+    <br>
+    
+    <button onclick="msToDay()">Chuyển milisecond thành ngày</button>
+    <p id="displayMsToDay"></p>
+
     <script>
-        function checkInterger(){
-            let a = prompt('Nhap so can kiem tra');
-            let check = Number.isInteger(parseFloat(a));
-            if (check)
+        function firstEquation() {
+            let a = parseFloat(prompt('Hãy nhập vào số a'));
+            let b = parseFloat(prompt('Hãy nhập vào số b'));
+            if (a == 0) {
+                if (b == 0) {
+                    document.write('Phương trình có vô số nghiệm');
+                } else {
+                    document.write('Phương trình vô nghiệm')
+                }
+            } else {
+                let x = -b / a;
+                document.write('Phương trình có nghiệm: ' + x)
+            }
         }
-        function Date(){
-            getti
+
+        function checkInterger() {
+            let number = parseFloat(prompt('Hãy nhập vào một số'));
+            let testNumber = Number.isInteger(number);
+            console.log(testNumber);
+
+            if (testNumber) {
+                if (number < 0) {
+                    document.write('Số ' + number + ' là số nguyên âm');
+                } else if (number === 0) {
+                    document.write('Số ' + number + ' không phải số nguyên âm, không phải là số nguyên âm');
+                } else {
+                    document.write('Số ' + number + ' là số nguyên dương');
+                }
+            } else {
+                alert('Số bạn vừa nhập không phải là số nguyên');
+            }
         }
+
+        function displayTime() {
+            let currentTime = new Date();
+            let hour = currentTime.getHours();
+            let minute = currentTime.getMinutes();
+            let second = currentTime.getSeconds();
+            let day = currentTime.getDay();
+            let date = currentTime.getDate();
+            let month = currentTime.getMonth() + 1;
+            let year = currentTime.getFullYear();
+
+            switch (day) {
+                case 0: {
+                    day = 'Chủ nhật';
+                    break;
+                }
+                case 1: {
+                    day = 'Thứ hai';
+                    break;
+                }
+                case 2: {
+                    day = 'Thứ ba';
+                    break;
+                }
+                case 3: {
+                    day = 'Thứ tư';
+                    break;
+                }
+                case 4: {
+                    day = 'Thứ năm';
+                    break;
+                }
+                case 5: {
+                    day = 'Thứ sáu';
+                    break;
+                }
+                case 6: {
+                    day = 'Thứ bảy';
+                    break;
+                }
+                default: {
+                    day = 'Không xác định'
+                }
+            }
+
+            alert('Bây giờ là: ' + hour + ' giờ ' + minute + ' phút ' + +second + ' giây. ' +
+                day + ', ' + 'ngày ' + date + ' tháng ' + month + ' năm ' + year);
+
+            //console.log(currentTime);
+        }
+
+        function changeTime() {
+            let inTime = new Date();
+            let getDay = inTime.getDay();
+            let getHour = inTime.getHours();
+            let getMinute = inTime.getMinutes();
+            let getSecond = inTime.getSeconds();
+            let inMiliSecond = ((((getDay*24 + getHour) * 60 + getMinute) * 60) + getSecond);
+
+
+            let changeTime = inTime * 1000;
+            document.getElementById('demo').innerHTML = 'Miliseconds = ' + inMiliSecond;
+            console.log(inTime);
+            console.log(changeTime);
+        }
+
+        function msToDay() {
+            var date = new Date();
+            var time = date.getTime();
+
+            let timeStamp = time;
+            var totalSeconds = timeStamp / 1000;
+            var second = totalSeconds % 60;
+
+            var totalMinute = totalSeconds / 60;
+            var minute = totalMinute % 60;
+
+            var totalHour = totalMinute / 60;
+            var hour = totalHour % 60;
+
+            var totalDay = totalHour / 24;
+            var day = totalDay % 24;
+
+            document.getElementById('displayMsToDay').innerHTML = 
+            ("ngay " + parseInt(day) + " ; " + parseInt(hour) + " gio " + parseInt(minute) + " phut " +
+                parseInt(second) + " giay");
+            console.log(time);            
+        }
+        
     </script>
 </body>
+
 </html>
