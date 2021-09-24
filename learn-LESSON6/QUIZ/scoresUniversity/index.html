@@ -6,6 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEARN: Quiz 1 of 47 (Tính điểm Đại học khối D)</title>
+    <style>
+        #result {
+            color: red;
+            font-size: 25px;
+        }
+    </style>
 </head>
 
 <body>
@@ -13,7 +19,7 @@
     <table>
         <tr>
             <td>Môn Toán</td>
-            <td><input type="number" name="mathScore" id="mathScore"></td>
+            <td><input type="number" name="mathScore" id="mathScore" required=""></td>
         </tr>
         <tr>
             <td>Môn Văn</td>
@@ -51,8 +57,9 @@
             let plusScore = parseFloat(document.getElementById('areaPlus').value);
             let result = document.getElementById('result');
             let totalScore = mathScore + literatureScore + englishScore;
+            let bonus = 0;
 
-            switch (plusScore) {
+            /*switch (plusScore) {
                 case 0.75:
                     result.innerHTML = 'Tổng điểm ĐH khối D của bạn là ' + (totalScore + 0.75);
                     break;
@@ -64,9 +71,17 @@
                     break;
                 default :
                     result.innerHTML = 'Tổng điểm ĐH khối D của bạn là ' + (totalScore + 0);
+            }*/
+            (plusScore == 0.75) ? bonus = 0.75: (bonus == 0.5) ? bonus = 0.5 : (bonus == 0.25) ? bonus = 0.25 :
+                bonus = 0;
+            //console.log(totalScore);
+            console.log(bonus);
+            totalScore = totalScore + bonus;
+            if (isNaN(totalScore)) {
+                result.innerText = "Không xác định";
+            } else {
+                result.innerHTML = 'Tổng điểm ĐH khối D của bạn là ' + totalScore;
             }
-
-            console.log(totalScore);
         });
     </script>
 

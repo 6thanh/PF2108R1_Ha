@@ -21,7 +21,9 @@
     </ul>
     <p>Sử dụng toán tử ? :</p>
     <br><br>
-    <button onclick="displayTotal()">Bài 1</button>
+    <button onclick="displayTotal()">Bài 1</button> <br> <br>
+    <button id="inputMessage">Nhập giá trị cho 'Message'</button>
+    <p id="displayMessage">Hiển thị Message</p>
 
     <script>
         function displayTotal() {
@@ -33,8 +35,23 @@
             console.log(c);
             //(c == 4) ? alert("true"): alert("false");
             //console.log(c);
-            (c == 4) ? alert('total = 4') : (c < 4) ? alert('Below') : alert('Over');
+            (c == 4) ? alert('total = 4'): (c < 4) ? alert('Below') : alert('Over');
         };
+
+        let inputMessage = document.getElementById('inputMessage');
+        let displayMessage = document.getElementById('displayMessage');
+        let result = 0;
+
+        inputMessage.addEventListener('click', function () {
+            let message = prompt('Hãy nhập giá trị cho chuỗi Message (Employee/Director/Null)');
+            (message == 'Employee') ? result = 'Hello':
+                (message == 'Director') ? result = 'Greetings' :
+                (message == '') ? result = 'No login' : result = 'Null';
+            
+                console.log(result);
+
+            displayMessage.innerHTML = result;
+        });
     </script>
 </body>
 
