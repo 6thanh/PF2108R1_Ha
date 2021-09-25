@@ -7,7 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEARN: Quiz 1 of 47 (Ứng dụng máy tính bỏ túi)</title>
     <style>
-        *{box-sizing: border-box;}
+        * {
+            box-sizing: border-box;
+        }
+
         .calculator {
             width: 400px;
             min-height: 350px;
@@ -15,10 +18,11 @@
             padding: 10px;
             margin: auto;
             display: grid;
-            grid-template-columns: repeat(4,1fr);
-            gap: 10px;            
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
             font-family: Arial, Helvetica, sans-serif;
         }
+
         .calculator button {
             width: 70px;
             height: 70px;
@@ -28,7 +32,8 @@
             font-weight: bold;
             margin: auto;
         }
-        #screen {
+
+        #result {
             grid-column: 1 / 5;
             border: 1px solid grey;
             width: 100%;
@@ -45,26 +50,26 @@
 <body>
     <h1>Ứng dụng máy tính bỏ túi</h1>
     <div class="calculator">
-        <div id="screen"></div>
+        <div id="result"></div>
         <button id="numOne">1</button>
         <button id="numTwo">2</button>
         <button id="numThree">3</button>
-        <button class="operator" id="+">+</button>
+        <button id="summation" value="+">+</button>
 
         <button id="numFour">4</button>
         <button id="numFive">5</button>
         <button id="numSix">6</button>
-        <button class="operator" id="-">-</button>
+        <button id="subtraction" value="-">-</button>
 
         <button id="numSeven">7</button>
         <button id="numEight">8</button>
         <button id="numNine">9</button>
-        <button class="operator" id="*">x</button>
+        <button id="multiplication" value="*">x</button>
 
-        <button id="numClear">C</button>
+        <button id="keyClear">C</button>
         <button id="numZero">0</button>
-        <button id="numEqual">=</button>
-        <button class="operator" id="/">/</button>
+        <button id="keyEqual">=</button>
+        <button id="division" value="/">/</button>
     </div>
     <p>
         ressult = 0;
@@ -75,29 +80,94 @@
     </p>
 
     <script>
-        
-        
-        document.getElementById('numOne').addEventListener('click', function(){            
+        let result = 0;
+        let firstNumber = 0;
+        let secondNumber = 0;
+        let operator = '';
+
+
+        document.getElementById('numOne').addEventListener('click', function () {
             let addOne = document.createTextNode(1);
-            document.getElementById('screen').appendChild(addOne);
+            document.getElementById('result').appendChild(addOne);
         });
-        document.getElementById('numTwo').addEventListener('click', function(){
+        document.getElementById('numTwo').addEventListener('click', function () {
             let addTwo = document.createTextNode(2);
-            document.getElementById('screen').appendChild(addTwo);
+            document.getElementById('result').appendChild(addTwo);
         });
-        document.getElementById('numThree').addEventListener('click', function(){
+        document.getElementById('numThree').addEventListener('click', function () {
             let addThree = document.createTextNode(3);
-            document.getElementById('screen').appendChild(addThree);
+            document.getElementById('result').appendChild(addThree);
+        });
+        document.getElementById('numFour').addEventListener('click', function () {
+            let addFour = document.createTextNode(4);
+            document.getElementById('result').appendChild(addFour);
+        });
+        document.getElementById('numFive').addEventListener('click', function () {
+            let addFive = document.createTextNode(5);
+            document.getElementById('result').appendChild(addFive);
+        });
+        document.getElementById('numSix').addEventListener('click', function () {
+            let addSix = document.createTextNode(6);
+            document.getElementById('result').appendChild(addSix);
+        });
+        document.getElementById('numSeven').addEventListener('click', function () {
+            let addSeven = document.createTextNode(7);
+            document.getElementById('result').appendChild(addSeven);
+        });
+        document.getElementById('numEight').addEventListener('click', function () {
+            let addEight = document.createTextNode(8);
+            document.getElementById('result').appendChild(addEight);
+        });
+        document.getElementById('numNine').addEventListener('click', function () {
+            let addNine = document.createTextNode(9);
+            document.getElementById('result').appendChild(addNine);
+        });
+        document.getElementById('numZero').addEventListener('click', function () {
+            let addZero = document.createTextNode(0);
+            document.getElementById('result').appendChild(addZero);
         });
 
-        document.getElementsByClassName('operator').addEventListener('click', function(){
-            let operator = document.getElementById('screen').innerText + 
-            document.getElementById('');
-            console.log(operator);
+        document.getElementById('summation').addEventListener('click', function(){                        
+            firstNumber = parseFloat(document.getElementById('result').innerText);
+            operator = document.getElementById('summation').value;
+            document.getElementById('result').innerText = '';
         });
+        document.getElementById('subtraction').addEventListener('click', function(){                        
+            firstNumber = parseFloat(document.getElementById('result').innerText);
+            operator = document.getElementById('subtraction').value;
+            document.getElementById('result').innerText = '';
+        });
+        document.getElementById('multiplication').addEventListener('click', function(){                        
+            firstNumber = parseFloat(document.getElementById('result').innerText);
+            operator = document.getElementById('multiplication').value;
+            document.getElementById('result').innerText = '';
+        });
+        document.getElementById('division').addEventListener('click', function(){                        
+            firstNumber = parseFloat(document.getElementById('result').innerText);
+            operator = document.getElementById('division').value;
+            document.getElementById('result').innerText = '';
+        });
+        document.getElementById('keyEqual').addEventListener('click', function(){
+            secondNumber = parseFloat(document.getElementById('result').innerText);
+            switch (operator){
+                case '+': result = firstNumber + secondNumber;
+                break;
+                case '-': result = firstNumber - secondNumber;
+                break;
+                case '*': result = firstNumber * secondNumber;
+                break;
+                case '/': result = firstNumber / secondNumber;
+            }
 
-        
+            document.getElementById('result').innerText = result;
+            
+            document.getElementById('keyClear').addEventListener('click', function(){
+                document.getElementById('result').innerText = '';
+            });
 
+            console.log(result);
+
+        });
     </script>
 </body>
 
