@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 8 (Sử dụng vòng lặp lồng nhau)</title>
+</head>
+
+<body>
+    <h1>Sử dụng vòng lặp lồng nhau</h1>
+    <button id="useFor">Bài 1: Sử dụng For</button>
+    <p id="displayTable">Table For</p>
+    <br>
+    <br>
+    <button id="useWhile">Bài 2: Sử dụng While</button>
+    <p id="displayTableWhile">Table While</p>
+    <br>
+    <br>
+    <button id="useDoWhile">Bài 3: Sử dụng DoWhile</button>
+    <p id="displayDoWhile">Table DoWhile</p>
+
+    <script>
+        document.getElementById('useFor').onclick = function () {
+            let sout = "<table border='1' width = '300' cellspacing='0' cellpadding = '3' >";
+            
+            for (i = 1; i <= 10; i++) {
+                sout = sout + "<tr>";
+                for (j = 1; j <= 10; j++) {
+                    sout = sout + "<td>" + i * j + "</td>";
+                }
+                //?sout = sout + "</tr>";
+            }
+            //?sout = sout + "</table>";
+            //document.write(sout);
+            document.getElementById('displayTable').innerHTML = sout;
+            // không cần thẻ đóng (table, tr, td)?
+            // không khai báo biến i và j?
+            // không được xuống hàng trong biến sout?
+        };
+        document.getElementById('useWhile').onclick = function (){
+            let board = "<table border='1' width = '300' cellspacing='0' cellpadding = '3' >";
+            let a = b = 1;
+                while (a<=10){
+                    board = board + "<tr>"
+                        while (b<=10){
+                            board = board + "<td>" + a * b;
+                            b++
+                        }
+                        b = 1;
+                        a++
+                }
+                console.log(a,b);
+                document.getElementById('displayTableWhile').innerHTML = board;
+        };
+
+        document.getElementById('useDoWhile').onclick = function (){
+            let tables = "<table border='1' width = '300' cellspacing='0' cellpadding = '3' >";
+            let x = y = 1;
+                do {
+                    tables = tables + "<tr>"
+                        do {
+                            tables = tables + "<td>" + x * y;
+                            y++;
+                        } while (y<=10);
+                        y = 1;
+                        x++;
+                } while (x<=10);
+                console.log(x,y);
+                document.getElementById('displayDoWhile').innerHTML = tables;
+                //x,y <=10? (doWhile)
+        };
+    </script>
+</body>
+
+</html>
