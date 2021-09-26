@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 8 (Sử dụng vòng lặp for)</title>
+</head>
+
+<body>
+    <h1>Sử dụng vòng lặp for</h1>
+    <button id="displayString">Bài 1</button> <br>
+    <p id="demo">Test Area</p><br>
+    <button id="inputNumber">Bài 2</button>
+    <p id="totalNumber">Equal</p>
+
+    <script>
+        document.getElementById('displayString').onclick = function () {
+            let text = '';
+            let i;
+            for (i = 0; i < 5; i++) {
+                text += "Đây là số " + i + "<br>";
+            }
+            console.log(i);
+            document.getElementById('demo').innerHTML = text;
+        };
+
+        document.getElementById('inputNumber').onclick = function () {
+            let a = parseInt(prompt('Enter a number:'));
+            let total = 0;
+            if (a <= 0) {
+                alert('Hãy nhập số lớn hơn 0');
+            }
+            for (let i = 1; i <= a; i++) {
+                total = total+i;
+            }
+            document.getElementById('totalNumber').innerHTML =
+            'Tổng của các số từ 1 đến '+ a + ' là = ' + total;
+        };
+    </script>
+</body>
+
+</html>
