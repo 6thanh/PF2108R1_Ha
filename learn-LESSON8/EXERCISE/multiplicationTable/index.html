@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <nav></nav>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 8 ( Sinh bảng cửu chương)</title>
+</head>
+
+<body>
+    <h1> Sinh bảng cửu chương</h1>
+    <button onclick="multiplcationTable()">Display</button>
+    <p id="display">Display</p>
+
+    <script>
+        function multiplcationTable() {
+            let board = "<table border='1' width='300' cellspacing='0'>";
+            let multiplication = "";
+
+            for (let i = 1; i <= 9; i++) {
+                board = board + "<tr>";
+                for (let j = 1; j <= 9; j++) {
+                    board = board + "<td>";
+                    multiplication = i + 'x' + j + '=' + i * j;
+                    board = board + multiplication;
+                }                
+            }
+            //document.write(board);
+            document.getElementById('display').innerHTML = board;
+
+        }
+
+    </script>
+</body>
+
+</html>
