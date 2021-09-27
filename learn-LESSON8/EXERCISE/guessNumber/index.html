@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 8- EXERSICE (Game đoán số)</title>
+</head>
+
+<body>
+    <h1>Game đoán số</h1>
+    <button id="guessNumber">Chơi</button>
+
+
+    <script>
+        document.getElementById('guessNumber').addEventListener('click', function () {
+            let maxNumber;
+            let checkNumber;
+            let chooseNumber;
+            let i = 1;
+
+            do {
+                maxNumber = parseFloat(prompt('Số tối đa muốn đoán (từ 1 đến 100):'));
+            } while (maxNumber > 100)
+// cách nào bắt buộc người dùng phỉ nhập prompt?
+// kiểm tra hai điều kiện while (|| maxNumber === null)?
+            do {
+                checkNumber = Math.floor(Math.random() * 100);
+            } while (checkNumber > maxNumber)
+
+            console.log(checkNumber);
+
+            do {
+                chooseNumber = parseFloat(prompt('Hãy đoán một số từ ' + 1 + ' đến ' + maxNumber +
+                    ' (lần thứ ' + i + ')'));
+                while (chooseNumber > maxNumber) {
+                    alert('Hãy chọn số nhỏ hơn ' + (maxNumber + 1));
+                    chooseNumber = parseFloat(prompt('Hãy đoán một số từ ' + 1 + ' đến ' + maxNumber +
+                        ' (lần thứ ' + i + ')'));
+                }
+                if (chooseNumber == checkNumber) {
+                    alert('Chúc mừng, bạn đã đoán đúng!');
+                    break;
+                }
+                i++;
+            } while (i <= 3)
+            console.log(i);
+            if (i == 4) {
+                alert('Bạn đã đoán sai 3 lần');
+            }
+
+        });
+    </script>
+</body>
+
+</html>
