@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 8 (Vừng ơi mở ra)</title>
+</head>
+<body>
+    <h1>Vừng ơi mở ra</h1>
+    <button id="logIn">Log in (While)</button>
+    <br>
+    <br>
+    <button id="logInDoWhile">Log in (DoWhile)</button>
+
+    <script>
+        document.getElementById('logIn').onclick = function(){
+            let PASS = prompt('Hãy nói câu thần chú mở cửa:')
+            while (PASS !== 'Vừng ơi mở ra'){
+                alert ('Hãy nhập lại thần chú:')
+                PASS = prompt('Hãy nói câu thần chú mở cửa:')
+            }
+            alert('Mở cửa thành công!');
+        };
+        document.getElementById('logInDoWhile').onclick = function() {
+            const PASSWORD = 'Vừng ơi mở ra';
+            let input = '';
+            do {
+                input = prompt('Hãy nhập vào mật khẩu');                
+            } while (input !== PASSWORD);
+            console.log('Mở cửa thành công');
+            console.log(PASSWORD);
+        };
+    </script>
+</body>
+</html>
