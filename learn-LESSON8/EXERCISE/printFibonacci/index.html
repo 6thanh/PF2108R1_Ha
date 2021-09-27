@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 8 (In dãy Fibonacci)</title>
+</head>
+
+<body>
+    <h1>In dãy Fibonacci</h1>
+    <button id="printFibonacci">Dãy số Fibonacci</button>
+    <p id="displayFibonacci">Display</p>
+
+    <script>
+        document.getElementById('printFibonacci').onclick = function () {
+            let number = parseInt(prompt('Dãy số fibonacci cần xem:'));
+            let firstNumber = 0;
+            let secondNumber = 1;
+            let numberFibonacci = firstNumber + secondNumber;
+            let i = 1;
+            //document.getElementById('displayFibonacci').innerText= numberFibonacci;
+
+            document.write(numberFibonacci + "<br>");
+            while (i < number) {
+                numberFibonacci = firstNumber + secondNumber;
+                firstNumber = secondNumber;
+                secondNumber = numberFibonacci;            
+                document.write(numberFibonacci + "<br>");
+                i++
+            }
+
+            console.log(i);
+        };
+    </script>
+</body>
+
+</html>
