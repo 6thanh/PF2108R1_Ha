@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 8 (Vẽ tam giác)</title>
+</head>
+
+<body>
+    <h1>Vẽ tam giác</h1>
+    <button onclick="triangleOne()">Hình 1</button>
+    <br> <br>
+    <button onclick="triangleTwo()">Hình 2</button>
+    <br> <br>
+    <button onclick="triangleThree()">Hình 3</button>
+    <br>
+    <div style="width: 200px;">
+        <span id="demoThree"></span>
+    </div>
+    <br>
+    <button onclick="triangleFour()">Hình 4</button>
+    <br>
+    <div style="width: 200px; text-align: right;">
+        <span id="demoFour"></span>
+    </div>
+    <br>
+    <button onclick="triangleFive()">Hình 5</button>
+    <br>
+    <div style="width: 200px;">
+        <span id="demoFive"></span>
+    </div>
+    <br>
+    <button onclick="triangleSix()">Hình 6</button>
+    <br>
+    <div style="width: 200px; text-align: right;">
+        <span id="demoSix"></span>
+    </div>
+    <br>
+
+
+    <script>
+        let i, j, m, n;
+        let one = three = four = "";
+        let two = "******";
+
+        function triangleOne() {
+            for (i = 1; i <= 5; i++) {
+                one = one + "*";
+                document.write(one);
+                document.write('<br>');
+            }
+        };
+
+        function triangleTwo() {
+            for (i = 5; i >= 0; i--) {
+                two = two.substr(0, i);
+                document.write(two);
+                document.write('<br>');
+            }
+        }
+
+        function triangleThree() {
+            n = parseInt(prompt("Nhập chiều rộng cạnh đáy:"))
+            for (i = 0; i < n; i++) {
+                for (j = 0; j <= i; j++) {
+                    document.getElementById('demoThree').innerHTML += '*';
+                }
+                document.getElementById('demoThree').innerHTML += '<br>';
+            }
+        };
+
+        function triangleFour() {
+            n = parseInt(prompt("Nhập chiều rộng cạnh đáy:"))
+            for (i = 0; i < n; i++) {
+                for (j = 0; j <= i; j++) {
+                    document.getElementById('demoFour').innerHTML += "*";
+                }
+                document.getElementById('demoFour').innerHTML += '<br>';
+            }
+        };
+
+        function triangleFive() {
+            m = parseInt(prompt("Nhập chiều rộng cạnh trên:"));
+            for (i = m - 1; i >= 0; i--) {
+                for (j = 0; j <= i; j++) {
+                    document.getElementById('demoFive').innerHTML += '*';
+                }
+                document.getElementById('demoFive').innerHTML += '<br>'
+            }
+        };
+
+        function triangleSix() {
+            m = parseInt(prompt("Nhập chiều rộng cạnh trên:"));
+            for (i = m - 1; i >= 0; i--) {
+                for (j = 0; j <= i; j++) {
+                    document.getElementById('demoSix').innerHTML += '*';
+                }
+                document.getElementById('demoSix').innerHTML += '<br>';
+            }
+        };
+    </script>
+</body>
+
+</html>
