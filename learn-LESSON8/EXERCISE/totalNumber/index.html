@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 8 (Tính tổng các số trong khoảng)</title>
+</head>
+
+<body>
+    <h1>Tính tổng các số trong khoảng</h1>
+    <button onclick="totalNumber()">Bắt đầu</button>
+
+    <script>
+        let a;
+        function totalNumber() {
+            a = prompt("Enter the first number");            
+            while (isNaN(a)) {
+                alert("Enter a integer");
+                a = prompt("Enter the first number");
+            }
+            // let b = prompt("Enter the second number");
+            // while (isNaN(b)) {
+            //     alert("Enter a integer")
+            //     b = prompt("Enter the first number");
+            // }
+            console.log(a);
+        };
+    </script>
+</body>
+
+</html>
