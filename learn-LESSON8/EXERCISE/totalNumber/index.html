@@ -11,21 +11,51 @@
 <body>
     <h1>Tính tổng các số trong khoảng</h1>
     <button onclick="totalNumber()">Bắt đầu</button>
+    <p id="message">result</p>
 
     <script>
-        let a;
+        let a, b, i;
+        let c = 0;
+
         function totalNumber() {
-            a = prompt("Enter the first number");            
-            while (isNaN(a)) {
+            a = prompt("Enter the first number");
+            testa = parseInt(a);
+            while (isNaN(a) || testa != a) {
                 alert("Enter a integer");
                 a = prompt("Enter the first number");
+                testa = parseInt(a);
             }
-            // let b = prompt("Enter the second number");
-            // while (isNaN(b)) {
-            //     alert("Enter a integer")
-            //     b = prompt("Enter the first number");
-            // }
             console.log(a);
+
+            b = prompt("Enter the second number");
+            testb = parseInt(b);
+            while (isNaN(b) || testb != b) {
+                alert("Enter a integer");
+                b = prompt("Enter the second number");
+                testb = parseInt(b);
+            }
+
+            a = parseInt(a);
+            b= parseInt(b);
+            
+            if (a > b) {
+                for (i = b; i <= a; i++) {
+                    c += i;
+                }
+                document.getElementById('message').innerHTML =
+                    "Total from " + b + " to " + a + " : " + c;
+            } else if (a < b) {
+                for (i = a; i <= b; i++) {
+                    c += i;
+                }
+                document.getElementById('message').innerHTML =
+                "Total from " + a + " to " + b + " : " + c;
+            } else if (a == b) {
+                c = a + b;
+                document.getElementById('message').innerHTML =
+                "Total from " + a + " to " + b + " : " + c;
+            }
+
         };
     </script>
 </body>
