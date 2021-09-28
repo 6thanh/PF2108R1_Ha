@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEARN; LESSON 8 (Số đảo ngược)</title>
+    <title>LEARN: LESSON 8 (Số đảo ngược)</title>
 </head>
+
 <body>
     <h1>Số đảo ngược</h1>
     <button id="reverseNumber">Đảo ngược số</button>
+    <p id="result">Kết quả:</p>
 
     <script>
-        document.getElementById('reverseNumber').onclick = function(){
-            let number = parseInt(prompt('Hãy nhập vào một số'));
-            let i = number.lenght;
+        document.getElementById('reverseNumber').onclick = function () {
+            let number = prompt('Hãy nhập vào một số', '');
+            let newNumber = '';
+            let i;
+
+            for (i = number.length-1; i >= 0; i--) {
+                newNumber += number[i];
+            }            
+            if (i=-1) {
+                document.getElementById('result').innerHTML =
+                "Số " + number + " được đảo ngược là " + newNumber;
+            }
         };
     </script>
 </body>
+
 </html>
