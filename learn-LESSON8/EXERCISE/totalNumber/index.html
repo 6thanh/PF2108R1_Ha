@@ -20,7 +20,7 @@
         function totalNumber() {
             a = prompt("Enter the first number");
             testa = parseInt(a);
-            while (isNaN(a) || testa != a) {
+            while (isNaN(a) || testa != a || a == null) {
                 alert("Enter a integer");
                 a = prompt("Enter the first number");
                 testa = parseInt(a);
@@ -29,7 +29,7 @@
 
             b = prompt("Enter the second number");
             testb = parseInt(b);
-            while (isNaN(b) || testb != b) {
+            while (isNaN(b) || testb != b || b == null) {
                 alert("Enter a integer");
                 b = prompt("Enter the second number");
                 testb = parseInt(b);
