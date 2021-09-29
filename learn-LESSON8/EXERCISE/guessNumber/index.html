@@ -32,13 +32,13 @@
 
             let minNumber = prompt('Số nhỏ nhất: ');
             let testMinNumber = parseInt(minNumber);
-            while (isNaN(minNumber) || testMinNumber != minNumber || minNumber == null || testMinNumber >
+            while (isNaN(minNumber) || testMinNumber != minNumber || minNumber == null || testMinNumber >=
                 testMaxNumber || testMinNumber < 0) {
-                alert("Hãy nhập vào một số nguyên dương");
+                alert("Hãy nhập vào một số nguyên dương nhỏ hơn "+ testMaxNumber);
                 minNumber = prompt('Số nhỏ nhất:');
                 testMinNumber = parseInt(minNumber);
 
-                if (testMinNumber > testMaxNumber) {
+                if (testMinNumber >= testMaxNumber) {
                     alert("Hãy nhập vào số nhỏ hơn " + testMaxNumber);
                     minNumber = prompt('Số nhỏ nhất:');
                     testMinNumber = parseInt(minNumber);
@@ -101,13 +101,13 @@
 
             let minInteger = prompt('Số nhỏ nhất: ');
             let testMinInteger = parseInt(minInteger);
-            while (isNaN(minInteger) || testMinInteger != minInteger || minInteger == null || testMinInteger >
+            while (isNaN(minInteger) || testMinInteger != minInteger || minInteger == null || testMinInteger >=
                 testMaxInteger || testMinInteger > 0) {
-                alert("Hãy nhập vào một số nguyên âm");
+                alert("Hãy nhập vào một số nguyên âm nhỏ hơn " + testMaxInteger);
                 minInteger = prompt('Số nhỏ nhất:');
                 testMinInteger = parseInt(minInteger);
 
-                if (testMinInteger > testMaxInteger) {
+                if (testMinInteger >= testMaxInteger) {
                     alert("Hãy nhập vào số nhỏ hơn " + testMaxInteger);
                     minInteger = prompt('Số nhỏ nhất:');
                     testMinInteger = parseInt(minInteger);

@@ -10,7 +10,7 @@
 
 <body>
     <h1>Game đoán số</h1>
-    <button id="guessNumber">Đoán số nguyên</button> 
+    <button id="guessNumber">Đoán số</button>
 
 
     <script>
@@ -41,13 +41,13 @@
         function guessInteger() {
             let minNumber = prompt('Số nhỏ nhất: ');
             let testMinNumber = parseInt(minNumber);
-            while (isNaN(minNumber) || testMinNumber != minNumber || minNumber == null || testMinNumber >
+            while (isNaN(minNumber) || testMinNumber != minNumber || minNumber == null || testMinNumber >=
                 testMaxNumber || testMinNumber < 0) {
-                alert("Hãy nhập vào một số nguyên dương");
+                alert("Hãy nhập vào một số nguyên dương nhỏ hơn " + testMaxNumber);
                 minNumber = prompt('Số nhỏ nhất:');
                 testMinNumber = parseInt(minNumber);
 
-                if (testMinNumber > testMaxNumber) {
+                if (testMinNumber >= testMaxNumber) {
                     alert("Hãy nhập vào số nhỏ hơn " + testMaxNumber);
                     minNumber = prompt('Số nhỏ nhất:');
                     testMinNumber = parseInt(minNumber);
@@ -57,6 +57,7 @@
                     minNumber = prompt('Số nhỏ nhất:');
                     testMinNumber = parseInt(minNumber);
                 }
+
             }
             let checkNumber = Math.floor(Math.random() * testMaxNumber);
             let chooseNumber;
@@ -97,13 +98,12 @@
 
             let minInteger = prompt('Số nhỏ nhất: ');
             let testMinInteger = parseInt(minInteger);
-            while (isNaN(minInteger) || testMinInteger != minInteger || minInteger == null || testMinInteger >
+            while (isNaN(minInteger) || testMinInteger != minInteger || minInteger == null || testMinInteger >=
                 testMaxNumber || testMinInteger > 0) {
-                alert("Hãy nhập vào một số nguyên âm");
+                alert("Hãy nhập vào một số nguyên âm nhỏ hơn " + testMaxNumber);
                 minInteger = prompt('Số nhỏ nhất:');
                 testMinInteger = parseInt(minInteger);
-
-                if (testMinInteger > testMaxNumber) {
+                if (testMinInteger >= testMaxNumber) {
                     alert("Hãy nhập vào số nhỏ hơn " + testMaxNumber);
                     minInteger = prompt('Số nhỏ nhất:');
                     testMinInteger = parseInt(minInteger);
@@ -113,6 +113,8 @@
                     minInteger = prompt('Số nhỏ nhất:');
                     testMinInteger = parseInt(minInteger);
                 }
+
+
             }
             let checkInteger;
             let chooseInteger;
