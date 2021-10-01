@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 8 (Luyện tập vòng lặp)</title>
+</head>
+
+<body>
+    <h1>Luyện tập vòng lặp</h1>
+    <button onclick="count()">Bài 1</button>
+    <button onclick="temperatureChange()">Bài 2</button>
+    <button onclick="twentyFibonacci()">Bài 3</button>
+    <button onclick="fibonacciDivision5()">Bài 4</button>
+    <button onclick="f()">Bài 5</button>
+    <button onclick="s()">Bài 6</button>
+    <button onclick="se()">Bài 7</button>
+
+    <script>
+        function count() {
+            alert("Đếm số từ 1 đến 100");
+            for (i = 1; 1 < 100; i++) {
+                if (i = 99) {
+                    alert("Đây là số 99");
+                    break;
+                }
+            }
+        }
+
+        function temperatureChange() {
+            let c = prompt("Hãy nhập vào nhiệt độ nước: ");
+            let testC = parseInt(c);
+            while (c == null || testC != c || c <= 0 || testC > 100 || testC < 20) {
+                while (c == null || testC != c || c <= 0) {
+                    c = prompt("Hãy nhập vào nhiệt độ nước (số nguyên dương): ");
+                    testC = parseInt(c);
+
+                }
+                while (testC > 100 || testC < 20) {
+                    if (testC > 100) {
+                        alert("Hơi nóng, bạn hãy giảm nhiệt độ");
+                        c = parseInt(prompt("Hãy nhập vào nhiệt độ nước: "));
+                        testC = parseInt(c);
+                    }
+                    if (testC < 20) {
+                        alert("Chưa đủ, hãy tăng nhiệt độ");
+                        c = parseInt(prompt("Hãy nhập vào nhiệt độ nước: "));
+                        testC = parseInt(c);
+                    }
+                }
+            }
+            alert("ok");
+        };
+
+        function twentyFibonacci() {
+            let firstNumber = 0;
+            let secondNumber = 1;
+            let numberFibonacci = 1;
+            let i = 0;            
+            console.log(numberFibonacci);
+
+            while (i < 20) {
+                numberFibonacci = firstNumber + secondNumber;
+                firstNumber = secondNumber;
+                secondNumber = numberFibonacci;
+                console.log(numberFibonacci);
+                i++
+            }
+        };
+    </script>
+</body>
+
+</html>

@@ -16,8 +16,9 @@
     <script>
         document.getElementById('primeNumber').addEventListener('click', function () {
             let number = parseInt(prompt("Số lượng số nguyên tố cần in ra"));
-            let M = '1';
-            let count = N = 3;
+            let M = '2';
+            let count = 3;
+            let N = 4;
             let i = j = 1;
             while (number <= 0 || number == null) {
                 if (number <= 0) {
@@ -33,11 +34,11 @@
                     print();
                     break;
                 case 2:
-                    M += (', ' + 2);
+                    M += (", " + 3);
                     print();
                     break;
                 default:
-                    M += (', ' + 2);
+                    M += (', ' + 3);
                     checkN();
             }
 
