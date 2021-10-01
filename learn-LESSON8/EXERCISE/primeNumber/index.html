@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 8 (Hiển thị các số nguyên tố đầu tiên)</title>
+</head>
+
+<body>
+    <h1>Hiển thị các số nguyên tố đầu tiên</h1>
+    <button id="primeNumber">Start</button>
+    <p id="displayPrime">Result</p>
+
+    <script>
+        document.getElementById('primeNumber').addEventListener('click', function () {
+            let number = parseInt(prompt("Số lượng số nguyên tố cần in ra"));
+            let M = '1';
+            let count = N = 3;
+            let i = j = 1;
+            while (number <= 0 || number == null) {
+                if (number <= 0) {
+                    number = parseInt(prompt("Số lượng số nguyên tố cần in ra (lớn hơn 0)"));
+                }
+                if (number == null) {
+                    alert("Hãy nhập số lượng số nguyên tố cần in ra")
+                    number = parseInt(prompt("Số lượng số nguyên tố cần in ra (lớn hơn 0)"));
+                }
+            }
+            switch (number) {
+                case 1:
+                    print();
+                    break;
+                case 2:
+                    M += (', ' + 2);
+                    print();
+                    break;
+                default:
+                    M += (', ' + 2);
+                    checkN();
+            }
+
+            function checkN() {
+                while (count <= number) {
+                    for (i = 2, j = 1; i < N; i++) {
+                        if (N % i == 0) {
+                            break;
+                        } else {
+                            j++;
+                        }
+                        if (j == (N - 1)) {
+                            M += (", " + N);
+                            count++;
+                        }
+                    }
+                    N++
+                }
+                print();
+            }
+
+            function print() {
+                document.getElementById('displayPrime').innerHTML = "Dãy số gồm " + number + " số nguyên tố là: " + M;
+                console.log(M);
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="pyramid">Pyramid 1</button>
+    <br>
+    <br>
+    <button id="demo">Pyramid 2</button>
+    <br>
+    <p id="displayPyramid"></p>
+
+    <script>
+        let i = j = k = l = 1;
+        document.getElementById('pyramid').addEventListener('click', function () {
+            for (i = 1; i <= 7; i++) {
+                for (j = (7 - i); j >= 1; j--) {
+                    document.write("&nbsp" + "&nbsp" + "&nbsp" + "&nbsp");
+                }
+                for (k = i; k >= 1; k--) {
+                    document.write(k + "&nbsp" + "&nbsp");
+                }
+                for (l = 2; l <= i; l++) {
+                    document.write(l + "&nbsp" + "&nbsp");
+                }
+                document.write("<br>");
+            }
+        });
+
+        document.getElementById('demo').addEventListener('click', function () {
+            for (i = 1; i <= 7; i++) {
+                for (j = (7 - i); j >= 1; j--) {
+                    document.getElementById('displayPyramid').innerHTML += ("&nbsp" + "&nbsp" + "&nbsp" +
+                        "&nbsp");
+                }
+                for (k = i; k >= 1; k--) {
+                    document.getElementById('displayPyramid').innerHTML += (k + "&nbsp" + "&nbsp");
+                }
+                for (l = 2; l <= i; l++) {
+                    document.getElementById('displayPyramid').innerHTML += (l + "&nbsp" + "&nbsp");
+                }
+                document.getElementById('displayPyramid').innerHTML += ("<br>");
+            }
+        });
+    </script>
+</body>
+
+</html>

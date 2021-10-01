@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="pyramid">Pyramid Pattern</button>
+    <br>
+    <br>
+    <button id="pyramidPattern">Pyramid Pattern</button>
+    <br>
+    <p id="demo"></p>
+
+    <script>
+        let i = j = k = l = m = n = 1;
+        document.getElementById('pyramid').addEventListener('click', function () {
+            document.write("<table width='50%' cellspacing='0'>");
+            for (i = 0; i <= 7; i++) {
+                document.write("<tr>");
+                for (j = (7 - i); j >= 1; j--) {
+                    document.write("<td>" + "&nbsp" + "&nbsp" + "&nbsp" + "&nbsp");
+                }
+                for (l = 0; l <= (i-1); l++) {
+                    m = 2**l;
+                    document.write( "<td>" + "&nbsp" + m +  "&nbsp");
+                }
+                for (k = i; k >= 0; k--) {                    
+                    n = 2**k;
+                    document.write( "<td>" + "&nbsp" + n + "&nbsp");
+                }
+                //document.write("<br>");
+            }
+        });
+
+    document.getElementById('pyramidPattern').addEventListener('click', function () {
+        let board = "<table width='50%' cellspacing='0'>";
+        for (i = 0; i <= 7; i++) {        
+            board += "<tr>"        
+                for (j = (7 - i); j >= 1; j--) {
+                    board += ("<td>" + "&nbsp" + "&nbsp" + "&nbsp" + "</td>");
+                }
+                for (l = 0; l <= (i-1); l++) {
+                    m = 2**l;
+                    board += ("<td>" + m + "&nbsp" + "&nbsp" + "</td>");
+                }
+                for (k = i; k >= 0; k--) {                    
+                    n = 2**k;
+                    board += ("<td>" + n + "&nbsp" + "&nbsp" + "</td>");                    
+                }
+                
+                //document.getElementById('demo').innerHTML += ("<br>");
+                board += "</tr>";
+            }
+            board += "</table>";            
+            document.getElementById('demo').style.textAlign = "right";
+            document.getElementById('demo').innerHTML = board;
+        });</script>
+</body>
+</html>

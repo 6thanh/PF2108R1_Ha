@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="displayPattern">Pattern</button>
+    <br>
+    <br>
+    <button id="patternA">Pattern A</button>
+    <br>
+    <p id="displayA"></p>
+    <br>
+    <button id="patternB">Pattern B</button>
+    <br>
+    <p id="displayB"></p>
+    <br>
+    <button id="patternC">Pattern C</button>
+    <br>
+    <p id="displayC"></p>
+    <br>
+    <button id="patternD">Pattern D</button>
+    <br>
+    <p id="displayD"></p>
+    <br>
+    <button id="patternDemo">Pattern Demo</button>
+    <br>
+    <p id="demo"></p>
+
+    <script>
+        let i = j = k = 0;
+        let a = b = "";
+        document.getElementById('displayPattern').addEventListener('click', function () {
+            document.write("Pattern A");
+            document.write("<br>");
+            for (i = 1; i <= 6; i++) {
+                for (j = 1; j <= i; j++) {
+                    document.write(j + "&nbsp");
+                }
+                document.write("<br>");
+            }
+            document.write("<br>");
+            document.write("Pattern B");
+            document.write("<br>");
+            for (i = 6; i >= 1; i--) {
+                for (j = 1; j <= i; j++) {
+                    document.write(j + "&nbsp");
+                }
+                document.write("<br>");
+            }
+            document.write("<br>");
+            document.write("Pattern C");
+            document.write("<br>");
+
+            for (i = 1; i <= 6; i++) {
+                for (k = 6; k >= i; k--) {
+                    document.write("&nbsp" + "&nbsp" + "&nbsp");
+                }
+                for (j = i; j >= 1; j--) {
+                    document.write(j + "&nbsp");
+                }
+                document.write("<br>");
+            }
+            document.write("<br>");
+            document.write("Pattern D");
+            document.write("<br>");
+            for (i = 6; i >= 1; i--) {
+                for (k = (6 - i); k >= 0; k--) {
+                    document.write("&nbsp" + "&nbsp" + "&nbsp");
+                }
+                for (j = 1; j <= i; j++) {
+                    document.write(j + "&nbsp");
+                }
+                document.write("<br>");
+            }
+        });
+        document.getElementById('patternA').addEventListener('click', function () {
+            for (i = 1; i <= 6; i++) {
+                for (j = 1; j <= i; j++) {
+                    document.getElementById('displayA').innerHTML += (j + " ");
+                }
+                document.getElementById('displayA').innerHTML += "<br>";
+            }
+        });
+
+        document.getElementById('patternB').addEventListener('click', function () {
+            for (i = 6; i >= 1; i--) {
+                for (j = 1; j <= i; j++) {
+                    document.getElementById('displayB').innerHTML += (j + " ");
+                }
+                document.getElementById('displayB').innerHTML += "<br>";
+            }
+        });
+
+        document.getElementById('patternC').addEventListener('click', function () {
+            for (i = 6; i >= 1; i--) {
+                for (k = (6-i); k <= 6; k++) {
+                    document.getElementById('displayC').innerHTML += ("&nbsp" + "&nbsp" + "&nbsp");
+                }
+                for (j = 7-i; j >= 1; j--) {
+                    document.getElementById('displayC').innerHTML += (j + " ");
+                }
+                document.getElementById('displayC').innerHTML += "<br>";
+            }
+        });
+        document.getElementById('patternD').addEventListener('click', function () {
+            for (i = 6; i >= 1; i--) {
+                for (k = i; k <= 6; k++) {
+                    document.getElementById('displayD').innerHTML += ("&nbsp" + "&nbsp" + "&nbsp");
+                }
+                for (j = 1; j <= i; j++) {
+                    document.getElementById('displayD').innerHTML += (j + " ");
+                }
+                document.getElementById('displayD').innerHTML += "<br>";
+            }
+        });
+
+    document.getElementById('patternDemo').addEventListener('click', function () {
+            for (i = 6; i >= 1; i--) {
+                for (j = 1; j <= i; j++) {
+                    document.getElementById('demo').innerHTML += (j + " ");
+                    document.getElementById('demo').style.textAlign = "right";
+                }
+                document.getElementById('demo').innerHTML += "<br>";
+            }
+        });
+        </script>
+</body>
+
+</html>

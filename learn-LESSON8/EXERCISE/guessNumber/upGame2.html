@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 8- EXERSICE (Game đoán số)</title>
+</head>
+
+<body>
+    <h1>Game đoán số</h1>
+    <button id="guessNumber">Đoán số</button>
+
+
+    <script>
+        document.getElementById('guessNumber').addEventListener('click', function () {
+            let maxNumber = prompt('Số lớn nhất (số nguyên dương hoặc nguyên âm):');
+            let testMaxNumber = parseInt(maxNumber);
+            while (isNaN(maxNumber) || testMaxNumber != maxNumber || maxNumber == null) {
+                alert("Hãy nhập vào một số nguyên dương hoặc nguyên âm");
+                maxNumber = prompt('Số lớn nhất:');
+                testMaxNumber = parseInt(maxNumber);
+            };
+
+            let minNumber = prompt('Số nhỏ nhất: ');
+            let testMinNumber = parseInt(minNumber);
+            while (isNaN(minNumber) || testMinNumber != minNumber || minNumber == null || testMinNumber >=
+                testMaxNumber) {
+                alert("Hãy nhập vào một số nguyên nhỏ hơn " + testMaxNumber);
+                minNumber = prompt('Số nhỏ nhất:');
+                testMinNumber = parseInt(minNumber);
+            }
+
+            let checkNumber = 0;
+            if (testMaxNumber + testMinNumber >= 0) {
+                do {
+                    checkNumber = Math.floor(Math.random() * testMaxNumber);
+                } while (checkNumber < testMinNumber)
+            } else {
+                do {
+                    checkNumber = Math.floor(Math.random() * testMinNumber);
+                } while (checkNumber > testMaxNumber)
+            }
+            console.log(checkNumber);
+
+            let i = 1;
+            do {
+                let chooseNumber = prompt('Hãy đoán một số từ ' + minNumber + ' đến ' + maxNumber +
+                    ' (lần thứ ' + i + ')');
+                let testChooseNumber = parseInt(chooseNumber);
+                while (isNaN(chooseNumber) || testChooseNumber != chooseNumber || testChooseNumber >
+                    testMaxNumber || testChooseNumber < testMinNumber || chooseNumber == null) {
+                    alert('Hãy đoán một số trong khoảng từ ' + minNumber + ' đến ' + maxNumber);
+                    chooseNumber = prompt('Hãy đoán một số từ ' + minNumber + ' đến ' + maxNumber +
+                        ' (lần thứ ' + i + ')');
+                    testChooseNumber = parseInt(chooseNumber);
+                }
+                if (testChooseNumber == checkNumber) {
+                    alert('Chúc mừng, bạn đã đoán đúng!');
+                    break;
+                }
+                if (i == 3 && testChooseNumber != checkNumber) {
+                    alert('Bạn đã đoán sai 3 lần');
+                    break;
+                }
+                i++;
+            } while (i <= 3)
+            console.log(i);
+        });
+    </script>
+</body>
+
+</html>
