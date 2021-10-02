@@ -11,7 +11,7 @@
 <body>
     <h1>Hiển thị các số nguyên tố đầu tiên</h1>
     <button id="primeNumber">Start</button>
-    <p id="displayPrime">Result</p>
+    <p id="displayPrime"></p>
 
     <script>
         document.getElementById('primeNumber').addEventListener('click', function () {
@@ -49,20 +49,20 @@
                             break;
                         } else {
                             j++;
+                            console.log(j);
                         }
                         if (j == (N - 1)) {
                             M += (", " + N);
                             count++;
                         }
                     }
-                    N++
+                    N++;
                 }
                 print();
             }
 
             function print() {
-                document.getElementById('displayPrime').innerHTML = "Dãy số gồm " + number + " số nguyên tố là: " + M;
-                console.log(M);
+                document.getElementById('displayPrime').innerHTML += "Dãy số gồm " + number + " số nguyên tố là: " + M + "<br>";
             }
         });
     </script>

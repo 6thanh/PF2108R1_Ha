@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Hiển thị các số nguyên tố đầu tiên</h1>
+    <button onclick="primeNumber()">Start</button>
+    <p id="displayPrime"></p>
+
+    <script>
+        function primeNumber() {
+            let prime = '2';
+            let N = 3;
+            do {
+                var number = prompt("Số lượng số nguyên tố cần xem: ");
+                var testNumber = parseInt(number);
+            } while (testNumber != number || testNumber <= 0 || number == null)
+            if (number == 1) {
+                printPrime();
+            } else if (number == 2) {
+                prime += (", " + N)
+                printPrime();
+            } else {
+                prime += (", " + N);
+                checkPrime();
+                printPrime();
+            }
+
+            function checkPrime() {
+                let count = 2;
+                while (count < testNumber) {
+                    for (let i = 2, j = 1; i <= Math.floor(Math.sqrt(N)); i++) {
+                        if (N % i == 0) {
+                            break;
+                        } else {
+                            j++;
+                            console.log(j);
+                        }
+                        if (j == Math.floor(Math.sqrt(N))) {
+                            prime += ", " + N;
+                            count++;
+                        }
+                    }
+                    N += 2;
+                }
+            }
+
+            function printPrime() {
+                document.getElementById('displayPrime').innerHTML +=
+                    "Dãy số nguyên tố gồm " + number + " số là: " + prime + "<br>";
+            }
+        }
+    </script>
+</body>
+
+</html>
