@@ -14,9 +14,9 @@
     <button onclick="temperatureChange()">Bài 2</button>
     <button onclick="twentyFibonacci()">Bài 3</button>
     <button onclick="fibonacciDivision5()">Bài 4</button>
-    <button onclick="f()">Bài 5</button>
-    <button onclick="s()">Bài 6</button>
-    <button onclick="se()">Bài 7</button>
+    <button onclick="totalTwentyFibonacci()">Bài 5</button>
+    <button onclick="division7()">Bài 6</button>
+    <button onclick="oneHundred()">Bài 7</button>
 
     <script>
         function count() {
@@ -58,10 +58,10 @@
             let firstNumber = 0;
             let secondNumber = 1;
             let numberFibonacci = 1;
-            let i = 0;            
+            let i = 0;
             console.log(numberFibonacci);
 
-            while (i < 20) {
+            while (i < 19) {
                 numberFibonacci = firstNumber + secondNumber;
                 firstNumber = secondNumber;
                 secondNumber = numberFibonacci;
@@ -69,6 +69,77 @@
                 i++
             }
         };
+
+        function fibonacciDivision5() {
+            //let number = parseInt("Dãy số nguyên tố cần in: ")
+            let firstNumber = 0;
+            let secondNumber = 1;
+            let numberFibonacci = 1;
+            let i = 0;
+
+            while (true) {
+                numberFibonacci = firstNumber + secondNumber;
+                firstNumber = secondNumber;
+                secondNumber = numberFibonacci;
+                i++
+                if (numberFibonacci % 23 == 0) {
+                    console.log("Số fibonacci đầu tiên chia hết cho 23: " + numberFibonacci);
+                    break
+                }
+            }
+        }
+
+        function totalTwentyFibonacci() {
+            let firstNumber = 0;
+            let secondNumber = 1;
+            let numberFibonacci = 1;
+            let i = 0;
+            let total = 0;
+            while (i < 19) {
+                numberFibonacci = firstNumber + secondNumber;
+                firstNumber = secondNumber;
+                secondNumber = numberFibonacci;
+                total += numberFibonacci;
+                i++
+            }
+            console.log("Tổng của 20 số fibonacci đầu tiên là: " + total);
+        }
+
+        function division7() {
+            let count = total = 0;
+            let N = 1;
+            let M = "";
+            while (count < 30) {
+                if (isDividedBySeven(N)) {
+                    total += N;
+                    M += (" " + N);
+                    count++;
+                }
+                N++;
+            }
+            document.write(M);
+            console.log(total);
+
+            function isDividedBySeven(number) {
+                return number % 7 == 0;
+            }
+        }
+
+        function oneHundred() {
+            let i = 1;
+            while (i <= 100) {
+                if (i % 3 == 0 && i % 5 == 0) {
+                    document.write("FizzBuzz" + "<br>");
+                } else if (i % 3 == 0) {
+                    document.write("Fizz" + "<br>");
+                } else if (i % 5 == 0) {
+                    document.write("Buzz" + "<br>");
+                } else {
+                    document.write(i + "<br>");
+                }
+                i++;
+            }
+        }
     </script>
 </body>
 
