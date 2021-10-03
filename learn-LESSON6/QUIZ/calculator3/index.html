@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .number,
+        .operator,
+        .equal {
+            width: 50%;
+            margin: 0.5em auto;
+        }
+
+        #display {
+            width: 50%;
+            height: 2em;
+            line-height: 2em;
+            margin: auto;
+            background: burlywood;
+            border-radius: 3px;
+            text-align: right;
+            padding-right: 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 id="display"></h2>
+    <div class="number">
+        <button onclick="numberZero()">0</button>
+        <button onclick="numberOne()">1</button>
+        <button onclick="numberTwo()">2</button>
+        <button onclick="numberThree()">3</button>
+        <button onclick="numberFour()">4</button>
+        <button onclick="numberFive()">5</button>
+        <button onclick="numberSix()">6</button>
+        <button onclick="numberSeven()">7</button>
+        <button onclick="numberEight()">8</button>
+        <button onclick="numberNine()">9</button>
+    </div>
+    <div class="operator">
+        <button class="keyOperator+">+</button>
+        <button class="keyOperator-">-</button>
+        <button class="keyOperator*">x</button>
+        <button class="keyOperator/">/</button>
+    </div>
+    <div class="equal">
+        <button id="keyClear">Clear</button>
+        <button id="keyBack">CE</button>
+        <button id="keyEqual">=</button>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+        let keyClear = document.getElementById('keyClear');
+        let keyBack = document.getElementById('keyBack');
+        let keyEqual = document.getElementById('keyEqual');
+
+        function numberZero() {
+            display.innerText += 0;
+        }
+
+        function numberOne() {
+            display.innerText += 1;
+        }
+
+        function numberTwo() {
+            display.innerText += 2;
+        }
+
+        function numberThree() {
+            display.innerText += 3;
+        }
+
+        function numberFour() {
+            display.innerText += 4;
+        }
+
+        function numberFive() {
+            display.innerText += 5;
+        }
+
+        function numberSix() {
+            display.innerText += 6;
+        }
+
+        function numberSeven() {
+            display.innerText += 7;
+        }
+
+        function numberEight() {
+            display.innerText += 8;
+        }
+
+        function numberNine() {
+            display.innerText += 9;
+        }
+
+        keyBack.addEventListener('click', function () {
+            let number = parseFloat(display.innerText);
+            let i = number.length;
+            if (i > 0) {
+                number = Math.floor(number / 10);
+            } else {
+                alert("enter a number");
+            }
+            console.log(number);
+        });
+    </script>
+</body>
+
+</html>
