@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 9 (Tìm giá trị lớn nhất trong mảng)</title>
+</head>
+
+<body>
+    <h1>Tìm giá trị lớn nhất trong mảng</h1>
+    <button id="maxInArray">Find max value in Array</button>
+    <div id="result"></div>
+
+    <script>
+        let maxInArray = document.getElementById('maxInArray');
+        let result = document.getElementById('result');
+        
+        maxInArray.addEventListener('click', function () {
+            let numbers = [-3, 5, 1, 3, 2, 10];
+            let max = numbers[0];
+            console.log(max);
+            let index = 0;
+
+            for (i = 0; i < numbers.length; i++) {
+                if (max < numbers[i]) {
+                    max = numbers[i];
+                    index = i;
+                }
+            }
+            result.innerHTML = "Max value in Array is: " + max + " at position " + index;
+        });
+    </script>
+</body>
+
+</html>
