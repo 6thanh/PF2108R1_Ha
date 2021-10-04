@@ -16,14 +16,14 @@
     <script>
         let maxInArray = document.getElementById('maxInArray');
         let result = document.getElementById('result');
-        
+
         maxInArray.addEventListener('click', function () {
             let numbers = [-3, 5, 1, 3, 2, 10];
             let max = numbers[0];
             console.log(max);
             let index = 0;
 
-            for (i = 0; i < numbers.length; i++) {
+            for (i = 1; i < numbers.length; i++) {
                 if (max < numbers[i]) {
                     max = numbers[i];
                     index = i;
