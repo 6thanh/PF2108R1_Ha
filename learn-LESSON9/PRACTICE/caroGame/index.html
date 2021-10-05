@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cờ Caro</title>
+</head>
+
+<body>
+    <h1>Cờ carô</h1>
+    <button id="gameCaro">Make Game</button>
+    <br>
+    <p id="displayGame"></p>
+    <br>
+    <button id="chooseA">Play A (x)</button>
+    <button id="chooseB" style="color: blue;">Play B (+)</button>
+
+    <script>
+        let gameCaro = document.getElementById("gameCaro");
+        let displayGame = document.getElementById("displayGame");
+        let chooseA = document.getElementById("chooseA");
+        let chooseB = document.getElementById("chooseB");
+        let board = [];
+        let display = '';
+        let M = N = 0;
+        let positionX = positionY = 0;
+
+        gameCaro.addEventListener('click', function () {
+            creat(M, N);
+            console.log(M, N);
+            makeGame();
+            displayBoard();
+        });
+        chooseA.addEventListener('click', function () {
+            testBoard();
+            playCaro();
+            board[positionX - 1][positionY - 1] = 'x';
+            display = "";
+            displayBoard();
+        });
+        chooseB.addEventListener('click', function () {
+            testBoard();
+            playCaro();
+            board[positionX - 1][positionY - 1] = '+';
+            display = "";
+            displayBoard();
+        });
+
+        function creat(row, column) {
+            do {
+                M = parseInt(prompt("Chiều cao bàn cờ: "));
+                N = parseInt(prompt("Chiều rộng bàn cờ: "));
+            } while (M <= 1 || N <= 1)
+            return;
+        }
+
+        function makeGame() {
+            for (let i = 0; i < M; i++) {
+                board[i] = new Array();
+                for (let j = 0; j < N; j++) {
+                    board[i][j] = 0;
+                }
+            }
+        }
+
+        function testBoard() {
+            while (M <= 1 || N <= 1) {
+                alert("Please Make Game");
+                creat(M, N);
+                console.log(M, N);
+                makeGame();
+                displayBoard();
+            }
+        }
+
+        function displayBoard() {
+            for (let i = j = 0; i <= M; i++) {
+                if (i == 0) {
+                    for (j = 0; j <= N; j++) {
+                        if (j <= 9) {
+                            display += (j + "&nbsp &nbsp");
+                        } else {
+                            display += (j + "&nbsp");
+                        }
+                    }
+                    display += "<br>";
+                } else if (i < 10) {
+                    display += (i + "&nbsp &nbsp");
+                    for (j = 0; j < N; j++) {
+                        display += (board[i - 1][j] + "&nbsp &nbsp");
+                    }
+                    display += "<br>";
+                } else {
+                    display += (i + "&nbsp");
+                    for (j = 0; j < N; j++) {
+                        display += (board[i - 1][j] + "&nbsp &nbsp");
+                    }
+                    display += "<br>";
+                }
+            }
+            displayGame.innerHTML = display;
+        }
+
+        function playCaro() {
+            do {
+                positionX = parseInt(prompt("Chọn vị trí dòng: "));
+                positionY = parseInt(prompt("Chọn vị trí cột: "));
+            } while (positionX > M || positionY > N || positionX <= 0 || positionY <= 0)
+        }
+    </script>
+</body>
+
+</html>
