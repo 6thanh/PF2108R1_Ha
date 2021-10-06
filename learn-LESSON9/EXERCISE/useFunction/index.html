@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 9 (Sử dụng các hàm có sẵn của mảng)</title>
+</head>
+
+<body>
+    <h1>Sử dụng các hàm có sẵn của mảng</h1>
+    <div id="exercise">
+        <p>Bài 1: Nối tất cả các phần tử trong một mảng chuỗi lại với nhau. </p>
+        <p>Bài 2: Chèn dấu (-) giữa 2 số chẵn.</p>
+        <p>Bài 3: Chuyển các ký tự chữ thường trong chuỗi nhập vào sang thành dạng chữ hoa.</p>
+    </div>
+    <button id="addArray">Bài 1:</button>
+    <button id="insertSubtraction">Bài 2:</button>
+    <button id="uppercase">Bài 3:</button>
+
+    <script>
+        let addArray = document.getElementById("addArray");
+        let insertSubtraction = document.getElementById("insertSubtraction");
+        let uppercase = document.getElementById("uppercase");
+
+        addArray.addEventListener('click', function () {
+            let myColor = ["Red", "Green", "White", "Black"];
+            console.log(myColor.join());
+            console.log(myColor.toString());
+            console.log(myColor.join("+"));
+        });
+        insertSubtraction.addEventListener('click', function () {
+            let myArray = prompt("Enter a number:", []);
+            //cách nhập vào một chuỗi???
+
+
+            // myArray = [...myArray];
+            // for (let i = 0; i < myArray.length; i++) {
+            //     if (myArray[i] % 2 == 0 && myArray[i + 1] % 2 == 0) {
+            //         myArray[i] += "-";
+            //     }
+            // }
+            //console.log(myArray.join(''));
+            //console.log(myArray[2]);
+            let result = [myArray[0]];
+            for (let j = 0; j < myArray.length; j++) {
+                if (myArray[j - 1] % 2 == 0 && myArray[j] % 2 == 0) {
+                    result.push("-", myArray[j]);
+                } else {
+                    result.push(myArray[j]);
+                }
+            }
+            console.log(result.join(''));
+        });
+        uppercase.addEventListener('click', function () {
+            let myArray = prompt("Enter a word:", '');
+            let UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let lower = "abcdefghijklmnopqrstuvwxyz";
+            let result = [];
+
+            for (let i = 0; i < myArray.length; i++) {
+                if (UPPER.indexOf(myArray[i]) !== -1) {
+                    result.push(myArray[i].toLowerCase());
+                }
+                if (lower.indexOf(myArray[i]) !== -1) {
+                    result.push(myArray[i].toUpperCase());
+                } else {
+                    result.push(myArray[i]);
+                }
+            }
+            console.log(result.join(''));
+        });
+
+    </script>
+</body>
+
+</html>

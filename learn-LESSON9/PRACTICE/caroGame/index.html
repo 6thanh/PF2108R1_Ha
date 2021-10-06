@@ -38,19 +38,19 @@
             displayBoard();
         });
         chooseA.addEventListener('click', function () {
-            testBoard();
-            playCaro();
-            board[positionX - 1][positionY - 1] = 'x';
-            display = "";
-            displayBoard();
+            play('x');
         });
         chooseB.addEventListener('click', function () {
+            play('+');
+        });
+
+        function play(signal) {
             testBoard();
             playCaro();
-            board[positionX - 1][positionY - 1] = '+';
+            board[positionX - 1][positionY - 1] = '<span style="color: red">' + signal  + "</span>";
             display = "";
             displayBoard();
-        });
+        }
 
         function creat(row, column) {
             do {
