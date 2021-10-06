@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 9 (Từ điển)</title>
+</head>
+
+<body>
+    <h1>Từ điển</h1>
+    <input type="text" id="inputWord" name="inputWord" placeholder="Nhập từ cần dịch">
+    <input type="button" id="translate" value="Dịch">
+    <p id="result"></p>
+
+    <script>
+        let inputWord = document.getElementById("inputWord");
+        let translate = document.getElementById("translate");
+        let result = document.getElementById("result");
+        let input_word = '';
+        let translated_word = '0';
+        let dictionary = [{
+                word: "alphabet",
+                meaning: "Bảng chữ cái",
+                "key": "Bảng chữ cái ..."
+            },
+            {
+                word: "dictionary",
+                meaning: "từ điển"
+            },
+            {
+                word: "make",
+                meaning: "Làm"
+            }
+        ]
+        
+        //console.log(dictionary[2].word);
+
+        function input() {
+            input_word = inputWord.value;
+            inputWord.value = '';
+        }
+        function findWord(wordInDictionary){
+            for (let i = 0; i < dictionary.length; i++) {
+                if (dictionary[i].word == input_word) {
+                    return translated_word = dictionary[i].meaning;
+                }
+            }    
+        }
+        translate.addEventListener('click', function () {
+            input();
+            findWord(translated_word);
+            if (translated_word != '0') {
+                result.innerHTML = "Từ bạn vừa nhập có nghĩa: " + translated_word;
+            } else {
+                result.innerHTML = "Từ bạn vừa nhập không có trong từ điển";
+            }
+        });
+    </script>
+</body>
+
+</html>
