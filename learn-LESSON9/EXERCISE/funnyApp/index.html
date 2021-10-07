@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 9 (Ứng dụng vui Faking Textarea on Typing)</title>
+</head>
+
+<body>
+    <h1>Ứng dụng vui Faking Textarea on Typing</h1>
+    <textarea name="inputText" id="funnyText" onkeyup="displayText()" cols="30" rows="10"></textarea>
+
+
+    <script>
+        let text = "BẠN LÀ NGƯỜI THÔNG MINH ĐẤY!";
+        let inputText = document.getElementById('funnyText');
+        //let x = y = [] //không được chấp nhận???
+        let x = [];
+        let y = [];
+        console.log(text);
+
+        function displayText() {
+            inputText.value = '';
+            x.push(inputText.value);
+            y.push(text[x.length - 1]);
+            inputText.value = y.join('');
+            if (y.length == (text.length + 1)) {
+                inputText.value = '';
+                x = [];
+                y = [];
+            }
+            console.log(x.join(''), x.length);
+            console.log(y.join(''));            
+        };
+        //setTimeout(displayText, 10); ???
+    </script>
+</body>
+
+</html>
