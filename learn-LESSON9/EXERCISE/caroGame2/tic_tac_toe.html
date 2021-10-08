@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 9 (Tic tac toe)</title>
+</head>
+
+<body>
+    <h1>Bàn cờ caro</h1>
+    <button id="createGame">Make new game</button>
+    <br>
+    <p id="display"></p>
+    <br>
+    <div class="player">
+        <button id="firstPlayer">1st Player (x)</button>
+        <button id="secondPlayer">2nd Player (0)</button>
+    </div>
+
+    <script>
+        let createGame = document.getElementById('createGame');
+        let display = document.getElementById('display');
+        let firstPlayer = document.getElementById('firstPlayer');
+        let secondPlayer = document.getElementById('secondPlayer');
+        let board = [];
+        let boardTable = '';
+        let x = y = 0;
+        let a = b = '';
+        let playerOne = [];
+        let playerTwo = [];
+        let testWin = [112131, 122232, 132333, 111213, 212223, 313233, 112233, 132231]
+        // ['11', '21', '31'],
+        // ['12', '22', '32'],
+        // ['13', '23', '33'],
+        // ['11', '12', '13'],
+        // ['21', '22', '23'],
+        // ['31', '32', '33'],
+        // ['11', '22', '33'],
+        // ['13', '22', '31']
+        ;
+
+        createGame.addEventListener('click', function () {
+            makeBoard();
+            makeBoardTable();
+        });
+        firstPlayer.addEventListener('click', function () {
+            choose('x');
+            a = "" + x + y + "";
+            playerOne.push(a);
+            if (playerOne.length == 3) {
+                playerOne.sort();
+                playerOne = playerOne.join('');
+                for (let i = 0; i < testWin.length; i++) {
+                    if (playerOne.indexOf(testWin[i]) !== -1) {
+                        alert("Player 1 win");
+                    }
+
+                }
+            };
+        });
+        secondPlayer.addEventListener('click', function () {
+            choose('0');
+            b = "" + x + y + "";
+            playerTwo.push(b);
+            if (playerTwo.length == 3) {
+                playerTwo.sort();
+                playerTwo = playerTwo.join('');
+                for (let i = 0; i < testWin.length; i++) {
+                    if (playerTwo.indexOf(testWin[i]) !== -1) {
+                        alert("Player 2 win");
+                    }
+
+                }
+            };
+        });
+
+        function makeBoard() {
+            for (let i = 0; i < 3; i++) {
+                board[i] = new Array();
+                for (let j = 0; j < 3; j++) {
+                    board[i][j] = '&nbsp';
+                }
+            }
+        }
+
+        function makeBoardTable() {
+            boardTable = '<table border="1" cellspacing="0">'
+            for (let i = 0; i < 3; i++) {
+                boardTable += "<tr>";
+                for (let j = 0; j < 3; j++) {
+                    boardTable += ('<td style="text-align:center" width="20" height="10">' + board[i][j] + '</td>');
+                }
+                boardTable += "</tr>";
+            }
+            boardTable += '</table>';
+            display.innerHTML = boardTable;
+        }
+
+        function choose(signal) {
+            boardTable = '';
+            do {
+                x = parseInt(prompt("Enter position X: "));
+                y = parseInt(prompt("Enter position Y: "));
+            } while (x > 3 || y > 3 || x<=0 || y<=0)
+            board[y - 1][x - 1] = signal;
+            makeBoardTable();
+        }
+
+        function checkWin() {
+
+        }
+    </script>
+</body>
+
+</html>

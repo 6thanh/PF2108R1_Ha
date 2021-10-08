@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 9 (Tic tac toe)</title>
+</head>
+
+<body>
+    <h1>Bàn cờ caro</h1>
+    <button id="createGame">Make new game</button>
+    <br>
+    <p id="display"></p>
+    <br>
+    <div class="player">
+        <button id="firstPlayer">1st Player (x)</button>
+        <button id="secondPlayer">2nd Player (0)</button>
+    </div>
+
+    <script>
+        let createGame = document.getElementById('createGame');
+        let display = document.getElementById('display');
+        let firstPlayer = document.getElementById('firstPlayer');
+        let secondPlayer = document.getElementById('secondPlayer');
+        let board = [];
+        let boardTable = '';
+        let W = H = 0;
+        let x = y = 0;
+
+        createGame.addEventListener('click', function () {
+            createBoard();
+            makeBoard();
+            makeBoardTable();
+        });
+        firstPlayer.addEventListener('click', function () {
+            choose('x');
+        });
+        secondPlayer.addEventListener('click', function () {
+            choose('0');
+        });
+
+        function createBoard() {
+            do {
+                W = parseInt(prompt("Enter width: "));
+                H = parseInt(prompt("Enter height: "));
+            } while (W < 3 || H < 3)
+        }
+
+        function makeBoard() {
+            for (let i = 0; i < H; i++) {
+                board[i] = new Array();
+                for (let j = 0; j < W; j++) {
+                    board[i][j] = '&nbsp';
+                }
+            }
+        }
+
+        function makeBoardTable() {
+            boardTable = '<table border="1" cellspacing="0">'
+            for (let i = 0; i < H; i++) {
+                boardTable += "<tr>";
+                for (let j = 0; j < W; j++) {
+                    boardTable += ('<td style="text-align:center" width="20" height="10">' + board[i][j] + '</td>');
+                }
+                boardTable += "</tr>";
+            }
+            boardTable += '</table>';
+            display.innerHTML = boardTable;
+        }
+
+        function choose(signal) {
+            boardTable = '';
+            do {
+                x = parseInt(prompt("Enter position X: "));
+                y = parseInt(prompt("Enter position Y: "));
+            } while (x <= 0 || y <= 0 || x > W || y > H)
+            board[y - 1][x - 1] = signal;
+            makeBoardTable();
+        }
+    </script>
+</body>
+
+</html>
