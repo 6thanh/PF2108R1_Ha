@@ -10,35 +10,28 @@
 
 <body>
     <h1>Tìm kiếm giá trị lớn nhất hoặc nhỏ nhất</h1>
+    <p id="number"></p>
     <button onclick="minValue()">Find Min</button>
     <button onclick="maxValue()">Find Max</button>
+    <p id="result">result</p>
 
     <script>
-        var nums = [];
-        for (var i = 0; i < 100; ++i) {
-            nums[i] = Math.floor(Math.random() * 101);
+        let number = document.getElementById('number');
+        let result = document.getElementById('result');
+        let nums = [];
+        for (let i = 0; i < 10; i++) {
+            nums[i] = new Array();
+            for (let j = 0; j < 10; j++) {
+                nums[i][j] = Math.floor(Math.random() * 101);
+            }
         }
-        dispArr(nums);
-        console.log(nums);
+
+        number.innerHTML = nums;
 
         function minValue() {
-
             var minValue = findMin(nums);
-            console.log(nums);
-            dispArr(nums);
-            document.write("<br/>");
-            document.write("The minimum value is: " + minValue);
-
-            function findMin(arr) {
-                var min = arr[0];
-                for (var i = 1; i < arr.length; ++i) {
-                    if (arr[i] < min) {
-                        min = arr[i];
-                    }
-                }
-                return min;
-            }
-
+            
+            result.innerHTML= "The minimum value is: " + minValue;
         }
 
         function maxValue() {
@@ -52,18 +45,6 @@
                 return max;
             }
         }
-
-        function dispArr(arr) {
-            for (var i = 0; i < arr.length; ++i) {
-                putstr(arr[i] + " ");
-                if (i % 10 == 9) {
-                    putstr("\n");
-                }
-            }
-            if (i % 10 != 0) {
-                putstr("\n");
-            }
-        } //end function dispArr()
     </script>
 </body>
 

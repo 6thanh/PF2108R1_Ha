@@ -49,9 +49,9 @@
         }
 
         function makeBoard() {
-            for (let i = 0; i < H; i++) {
+            for (let i = 0; i <= H; i++) {
                 board[i] = new Array();
-                for (let j = 0; j < W; j++) {
+                for (let j = 0; j <= W; j++) {
                     board[i][j] = '&nbsp';
                 }
             }
@@ -59,10 +59,19 @@
 
         function makeBoardTable() {
             boardTable = '<table border="1" cellspacing="0">'
-            for (let i = 0; i < H; i++) {
+            for (let i = 0; i <= H; i++) {
                 boardTable += "<tr>";
-                for (let j = 0; j < W; j++) {
-                    boardTable += ('<td style="text-align:center" width="20" height="10">' + board[i][j] + '</td>');
+                for (let j = 0; j <= W; j++) {
+                    if (i == 0) {
+                        boardTable += ('<td style="text-align:center" width="20" height="10">' + j + '</td>');
+                    } else {
+                        if (j == 0) {
+                            boardTable += ('<td style="text-align:center" width="20" height="10">' + i + '</td>');
+                        } else {
+                            boardTable += ('<td style="text-align:center" width="20" height="10">' + board[i][j] +
+                                '</td>');
+                        }
+                    }
                 }
                 boardTable += "</tr>";
             }
@@ -73,10 +82,10 @@
         function choose(signal) {
             boardTable = '';
             do {
-                x = parseInt(prompt("Enter position X: "));
-                y = parseInt(prompt("Enter position Y: "));
+                x = parseInt(prompt("Enter position X (column): "));
+                y = parseInt(prompt("Enter position Y (row): "));
             } while (x <= 0 || y <= 0 || x > W || y > H)
-            board[y - 1][x - 1] = signal;
+            board[y][x] = signal;
             makeBoardTable();
         }
     </script>
