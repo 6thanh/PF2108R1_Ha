@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 10 (Chuyển đổi nhiệt độ)</title>
+</head>
+
+<body>
+    <h1>Temperature Converter</h1>
+    <p>Type a value in the Fahrenheit field to converter the value to Celcius</p>
+    <label for="inputFahrenheit">Fahrenheit</label>
+    <!-- <input type="number" id="inputFahrenheit" name="inputFahrenheit" placeholder="Enter Fahrenheit"
+        onkeyup="displayCelcius()"> -->
+        <input type="number" id="inputFahrenheit" placeholder="Fahrenheit"
+        oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value)">
+    <p id="result">Celcius:</p>
+
+    <script>
+        //CÁCH 1
+        function temperatureConverter(valNum) {
+            valNum = parseFloat(valNum);
+            document.getElementById('result').innerHTML = "Celcius: " + (valNum-32)/1.8;
+        }
+        
+        //CÁCH 2
+        // let result = document.getElementById('result');
+
+        // function changeToCelcius(toCelcius) {
+        //     let C = 0;
+        //     return C = (toCelcius - 32) / 1.8;
+        // }
+
+        // function displayCelcius() {
+        //     let inputFahrenheit = document.getElementById('inputFahrenheit').value;
+        //     let celcius = changeToCelcius(inputFahrenheit);
+        //     result.innerHTML = "Celcius: " + celcius;
+        // }
+    </script>
+
+</body>
+
+</html>
