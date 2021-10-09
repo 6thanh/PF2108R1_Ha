@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 9 (Tìm kiếm giá trị lớn nhất hoặc nhỏ nhất)</title>
+
+</head>
+
+<body>
+    <h1>Tìm kiếm giá trị lớn nhất hoặc nhỏ nhất</h1>
+
+    <h2>CÁCH 1 (MẢNG 1 CHIỀU)</h2>
+    <p id="number"></p>
+    <button onclick="minValue()">Find Min</button>
+    <button onclick="maxValue()">Find Max</button>
+    <p id="result">result</p>
+
+    <hr>
+    <h2>CÁCH 2 (MẢNG 2 CHIỀU)</h2>
+    <p id="ArrayTwo"></p>
+    <button id="minNumber">Find Min</button>
+    <button id="maxNumber">Find Max</button>
+    <p id="display">result</p>
+    <script>
+        // CÁCH 1
+        let number = document.getElementById('number');
+        let result = document.getElementById('result');
+        let nums = [];
+        let displayNums = "";
+
+        for (let i = 0; i < 100; i++) {
+            nums[i] = Math.floor(Math.random() * 101);
+            if (i != 99) {
+                displayNums += nums[i] + ", ";
+                if (i % 10 == 9) {
+                    displayNums += "<br>";
+                }
+            } else {
+                displayNums += nums[i];
+            }
+        }
+        console.log(displayNums.length);
+        number.innerHTML = displayNums;
+        number.style.color = "blue";
+        number.style.fontWeight = "bold";
+        number.style.textAlign = "justify";
+
+        function minValue() {
+            let minValue = nums[0];
+            for (let i = 0; i < nums.length; i++) {
+                if (minValue > nums[i]) {
+                    minValue = nums[i];
+                }
+            }
+            result.innerHTML = "The minimum value is: " + minValue;
+        }
+
+        function maxValue() {
+            let maxValue = nums[0];
+            for (let i = 0; i < nums.length; i++) {
+                if (maxValue < nums[i]) {
+                    maxValue = nums[i];
+                }
+            }
+            result.innerHTML = "The maximum value is: " + maxValue;
+        }
+
+
+        // CÁCH 2
+        let arrayTwo = document.getElementById('ArrayTwo');
+        let minNumber = document.getElementById('minNumber');
+        let maxNumber = document.getElementById('maxNumber');
+        let display = document.getElementById('display');
+        let oneHundred = [];
+        let displayNumber = "";
+
+        for (let i = 0; i < 10; i++) {
+            oneHundred[i] = new Array();
+            displayNumber += "<br>";
+            for (let j = 0; j < 10; j++) {
+                oneHundred[i][j] = Math.floor(Math.random() * 101);
+                if (j != 9) {
+                    displayNumber += oneHundred[i][j] + ", ";
+                } else {
+                    displayNumber += oneHundred[i][j];
+                }
+            }
+            arrayTwo.innerHTML = displayNumber;
+        }
+        let min = max = oneHundred[0][0];
+        for (let i = 0; i < 10; i++){
+            for (let j = 0; j < 10; j++){
+                if (min > oneHundred[i][j]) {
+                    min = oneHundred[i][j];
+                }
+                if (max < oneHundred[i][j]) {
+                    max = oneHundred[i][j];
+                }
+            }
+        }
+        minNumber.addEventListener('click', function(){
+            display.innerHTML = "The minimum is: " + min;
+        });
+        maxNumber.addEventListener('click', function(){
+            display.innerHTML = "The maximum is: " + max;
+        });
+    </script>
+</body>
+
+</html>

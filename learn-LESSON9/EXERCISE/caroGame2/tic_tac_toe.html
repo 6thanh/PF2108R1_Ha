@@ -13,7 +13,7 @@
     <button id="createGame">Make new game</button>
     <br>
     <p id="display"></p>
-    <br>
+    <p id="result">Mỗi người chọn tối đa 5 lượt, người thắng là người có 3 ô thẳng hàng (ngang, dọc hoặc chéo)</p>
     <div class="player">
         <button id="firstPlayer">1st Player (x)</button>
         <button id="secondPlayer">2nd Player (0)</button>
@@ -24,6 +24,7 @@
         let display = document.getElementById('display');
         let firstPlayer = document.getElementById('firstPlayer');
         let secondPlayer = document.getElementById('secondPlayer');
+        let result = document.getElementById('result');
         let board = [];
         let boardTable = '';
         let x = y = 0;
@@ -51,25 +52,12 @@
                 x = parseInt(prompt("Enter position X (column): "));
                 y = parseInt(prompt("Enter position Y (row): "));
                 a = "" + x + y + "";
-            } while (x > 3 || y > 3 || x <= 0 || y <= 0 || a === b)
+            } while (x > 3 || y > 3 || x <= 0 || y <= 0 || a == b || playerOne.indexOf(a) != -1)
 
             choose('x');
             playerOne.push(a);
             if (playerOne.length >= 3) {
-                playerOne.sort();
-                for (let i = 0; i < testWin.length; i++) {
-                    for (let j = 0; j < playerOne.length; j++) {
-                        if (testWin[i].indexOf(playerOne[j]) !== -1 &&
-                            testWin[i].indexOf(playerOne[j + 1]) !== -1) {
-                            if (testWin[i].indexOf(playerOne[j - 1]) !== -1 ||
-                                testWin[i].indexOf(playerOne[j + 2]) !== -1 ||
-                                testWin[i].indexOf(playerOne[j + 3]) !== -1 ||
-                                testWin[i].indexOf(playerOne[j + 4]) !== -1) {
-                                alert("Player 1 win");
-                            }
-                        }
-                    }
-                }
+                testWinPlayer(playerOne);
             }
         });
         secondPlayer.addEventListener('click', function () {
@@ -78,26 +66,36 @@
                 x = parseInt(prompt("Enter position X (column): "));
                 y = parseInt(prompt("Enter position Y (row): "));
                 b = "" + x + y + "";
-            } while (x > 3 || y > 3 || x <= 0 || y <= 0 || a === b)
+            } while (x > 3 || y > 3 || x <= 0 || y <= 0 || a == b || playerTwo.indexOf(b) != -1)
             choose('0');
             playerTwo.push(b);
             if (playerTwo.length >= 3) {
-                playerTwo.sort();
-                for (let i = 0; i < testWin.length; i++) {
-                    for (let j = 0; j < playerTwo.length; j++) {
-                        if (testWin[i].indexOf(playerTwo[j]) !== -1 &&
-                            testWin[i].indexOf(playerTwo[j + 1]) !== -1) {
-                            if (testWin[i].indexOf(playerTwo[j - 1]) !== -1 ||
-                                testWin[i].indexOf(playerTwo[j + 2]) !== -1 ||
-                                testWin[i].indexOf(playerTwo[j + 3]) !== -1 ||
-                                testWin[i].indexOf(playerTwo[j + 4]) !== -1) {
-                                alert("Player 2 win");
-                            }
+                testWinPlayer(playerTwo);
+            }
+        });
+
+        function testWinPlayer(player) {
+            player.sort();
+            for (let i = 0; i < testWin.length; i++) {
+                for (let j = 0; j < player.length; j++) {
+                    if (testWin[i].indexOf(player[j]) !== -1 &&
+                        testWin[i].indexOf(player[j + 1]) !== -1) {
+                        if (testWin[i].indexOf(player[j - 1]) !== -1 ||
+                            testWin[i].indexOf(player[j + 2]) !== -1 ||
+                            testWin[i].indexOf(player[j + 3]) !== -1 ||
+                            testWin[i].indexOf(player[j + 4]) !== -1) {
+                            displayWin(player);
+                            return;
                         }
                     }
                 }
             }
-        });
+            if (playerOne.length == 5 || playerTwo.length == 5) {
+                result.innerHTML = "End in a draw";
+                result.style.color = "blue";
+                textEnd()
+            }
+        }
 
         function makeBoard() {
             for (let i = 0; i < 3; i++) {
@@ -124,6 +122,21 @@
         function choose(signal) {
             board[y - 1][x - 1] = signal;
             makeBoardTable();
+        }
+
+        function displayWin(winner) {
+            let i = "";
+            if (winner == playerOne) i = 1;
+            if (winner == playerTwo) i = 2;
+            result.innerHTML = "Player " + i + " win";
+            result.style.color = "red";
+            textEnd();
+        }
+
+        function textEnd() {
+            result.style.textAlign = "center";
+            result.style.fontWeight = "bold";
+            result.style.fontSize = "30px";
         }
     </script>
 </body>

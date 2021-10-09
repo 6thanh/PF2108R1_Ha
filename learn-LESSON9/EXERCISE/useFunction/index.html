@@ -35,6 +35,7 @@
             //cách nhập vào một chuỗi???
 
 
+            // CÁCH 1
             // myArray = [...myArray];
             // for (let i = 0; i < myArray.length; i++) {
             //     if (myArray[i] % 2 == 0 && myArray[i + 1] % 2 == 0) {
@@ -43,6 +44,8 @@
             // }
             //console.log(myArray.join(''));
             //console.log(myArray[2]);
+
+            // CÁCH 2
             let result = [myArray[0]];
             for (let j = 0; j < myArray.length; j++) {
                 if (myArray[j - 1] % 2 == 0 && myArray[j] % 2 == 0) {
@@ -55,23 +58,32 @@
         });
         uppercase.addEventListener('click', function () {
             let myArray = prompt("Enter a word:", '');
-            let UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            let lower = "abcdefghijklmnopqrstuvwxyz";
             let result = [];
 
+            // CÁCH 1           
             for (let i = 0; i < myArray.length; i++) {
-                if (UPPER.indexOf(myArray[i]) !== -1) {
-                    result.push(myArray[i].toLowerCase());
-                }
-                if (lower.indexOf(myArray[i]) !== -1) {
+                if (myArray[i] == myArray[i].toLowerCase()) {
                     result.push(myArray[i].toUpperCase());
                 } else {
-                    result.push(myArray[i]);
+                    result.push(myArray[i].toLowerCase()); 
                 }
             }
+
+            // CÁCH 2
+            // let UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            // let lower = "abcdefghijklmnopqrstuvwxyz";
+            // for (let i = 0; i < myArray.length; i++) {
+            //     if (UPPER.indexOf(myArray[i]) !== -1) {
+            //         result.push(myArray[i].toLowerCase());
+            //     }
+            //     if (lower.indexOf(myArray[i]) !== -1) {
+            //         result.push(myArray[i].toUpperCase());
+            //     } else {
+            //         result.push(myArray[i]);
+            //     }
+            // }
             console.log(result.join(''));
         });
-
     </script>
 </body>
 
