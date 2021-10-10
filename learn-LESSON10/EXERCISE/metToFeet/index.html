@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 10 (Chuyển đổi giữa feet và meters)</title>
+</head>
+<body>
+    <h1>Chuyển đổi giữa feet và meters</h1>
+    <input type="number" id="metToFeet" placeholder="Enter meter" oninput="changeToFeet(this.value)" onchange="changeToFeet(this.value)">
+    <input type="number" id="feetToMeter" placeholder="Enter feet" oninput="changeToMeter(this.value)" onchange="changeToFeet(this.value)">
+
+    <script>
+        function changeToFeet(value){
+            //value = parseFloat(value);
+            document.getElementById('feetToMeter').value = value *3.279;
+        }
+        function changeToMeter(value){            
+            document.getElementById('metToFeet').value = value *0.305;
+        }
+    </script>
+</body>
+</html>
