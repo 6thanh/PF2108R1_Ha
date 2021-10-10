@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 10 (Hàm kiểm tra số nguyên tố)</title>
+</head>
+
+<body>
+    <h1>Hàm kiểm tra số nguyên tố</h1>
+    <button id="primeNumber">Số nguyên tố nhỏ hơn 10000</button>
+    <p id="result">Display</p>
+
+    <script>
+        let primeNumber = document.getElementById('primeNumber');
+        let result = document.getElementById('result');
+
+        primeNumber.addEventListener('click', function () {
+            let number = 0;
+            let checkNumber = 0;
+            do {
+                number = parseFloat(prompt("Enter a number"));
+                checkNumber = parseInt(number);
+            } while (checkNumber != number || checkNumber == null || checkNumber == 0)
+            let testNumber = isPrime(number);
+            if (testNumber) {
+                result.innerHTML = "Number " + number + " is a prime"
+            } else {
+                result.innerHTML = "Number " + number + " is NOT a prime"
+            }
+        });
+
+        function isPrime(number) {
+            let miniPrime = [2, 3, 7];
+            if (miniPrime.indexOf(number) != -1) {
+                return true;
+            } else {
+                if (number % 2 == 0 && number != 2) {
+                    return false;
+                } else {
+                    for (i = 3; i <= parseInt(Math.sqrt(number)); i++) {
+                        if (number % i == 0) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>
