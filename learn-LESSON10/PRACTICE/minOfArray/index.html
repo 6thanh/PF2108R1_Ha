@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 10 (Hàm tìm giá trị nhỏ nhất của mảng)</title>
+</head>
+
+<body>
+    <h1>Hàm tìm giá trị nhỏ nhất của mảng</h1>
+    <p>Find Minimum in Array</p>
+    <button onclick="examOne()">Exam 1</button>
+    <button onclick="examTwo()">Exam 2</button>
+    <button onclick="examThree()">Exam 3</button>
+    <button onclick="examFour()">Exam 4</button>
+    <p id="result">Result</p>
+
+    <script>
+        let result = document.getElementById('result');
+
+        let arr1 = [3, 5, 1, 8, -3, 7, 8];
+        let arr2 = [7, 12, 6, 9, 20, 56, 89];
+        let arr3 = [];
+        let arr4 = [0, 0, 0, 0, 0, 0];
+
+        function findMin(examArray) {
+            if (examArray.length == 0) {
+                return null;
+                //return -1;
+            }
+            let min = examArray[0];
+            let index = 0;
+            for (let i = 0; i < examArray.length; i++) {
+                if (min > examArray[i]) {
+                    min = examArray[i];
+                    //index = i;
+                }
+            }
+            return min;
+            //return index;
+        }
+
+        function examOne() {
+            let display = findMin(arr1);
+            result.innerHTML = "Min of Array is: " + display;
+        };
+
+        function examTwo() {
+            let display = findMin(arr2);
+            result.innerHTML = "Min of Array is: " + display;
+        };
+
+        function examThree() {
+            let display = findMin(arr3);
+            if (display == null) {
+                result.innerHTML = "Array is " + display;
+            } else {
+                result.innerHTML = "Min of Array is: " + display;
+            }
+        };
+
+        function examFour() {
+            let display = findMin(arr4);
+            result.innerHTML = "Min of Array is: " + display;
+        };
+    </script>
+</body>
+
+</html>
