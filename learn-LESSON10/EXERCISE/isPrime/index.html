@@ -23,7 +23,7 @@
             do {
                 number = parseFloat(prompt("Enter a number"));
                 checkNumber = parseInt(number);
-            } while (checkNumber != number || checkNumber == null || checkNumber == 0)
+            } while (checkNumber != number || checkNumber == null || checkNumber <= 0)
             let testNumber = isPrime(number);
             if (testNumber) {
                 result.innerHTML = "Number " + number + " is a prime"
@@ -33,14 +33,14 @@
         });
 
         function isPrime(number) {
-            let miniPrime = [2, 3, 7];
+            let miniPrime = [2, 3, 5, 7];
             if (miniPrime.indexOf(number) != -1) {
                 return true;
             } else {
                 if (number % 2 == 0 && number != 2) {
                     return false;
                 } else {
-                    for (i = 3; i <= parseInt(Math.sqrt(number)); i++) {
+                    for (i = 3; i <= parseInt(Math.sqrt(number)); i+=2) {
                         if (number % i == 0) {
                             return false;
                         } else {

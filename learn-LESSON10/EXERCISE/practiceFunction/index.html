@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 10 (Luyện tập tạo và sử dụng hàm)</title>
+</head>
+
+<body>
+    <h1>Luyện tập tạo và sử dụng hàm</h1>
+    <p>Bài 1: Tạo hàm nhận vào hai tham số.</p>
+    <p>Bài 2: Trả lại tên chòm sao của ngôi sao</p>
+    <p>Bài 3: Tính bình phương của một số</p>
+    <p>Bài 4: Tính diện tích, chu vi hình tròn.</p>
+    <p>Bài 5: Tính giai thừa của một số nguyên</p>
+    <p>Bài 6: Kiểm tra ký tự nhập vào có phải là ký tự số không</p>
+    <p>Bài 7: Số nguyên có giá trị nhỏ nhất trong 3 số</p>
+    <p>Bài 8: Kiểm tra số nguyên dương</p>
+    <p>Bài 9: Đảo ngược mảng số nguyên</p>
+    <p>Bài 10: Kiểm tra ký tự bất kỳ trong mảng</p>
+
+    <button onclick="createFunction()">Bài 1</button>
+    <button onclick="findStar()">Bài 2</button>
+    <p id="resultTwo">Display Two</p>
+    <button onclick="square()">Bài 3</button>
+    <button onclick="circle()">Bài 4</button>
+    <button onclick="factorial()">Bài 5</button>
+    <button onclick="number()">Bài 6</button>
+    <button onclick="minInteger()">Bài 7</button>
+    <button onclick="checkInteger()">Bài 8</button>
+    <button onclick="reverseInteger()">Bài 9</button>
+    <button onclick="characterInArray()">Bài 10</button>
+
+    <script>
+        function createFunction(a, b) {
+            a = parseFloat(prompt("Enter the first number: "));
+            b = parseFloat(prompt("Enter the second number: "));
+            if (a > b) {
+                console.log("First number bigger than second number");
+            } else {
+                console.log("Total = " + (a + b))
+            }
+        };
+
+        function findStar() {
+            let starName = ['Polaris', 'Aldebaran', 'Deneb', 'Vega', 'Altair', 'Dubhe', 'Regulus'];
+            let constellation = ['Ursa Minor', 'Tarurus', 'Cygnus', 'Lyra', 'Aquila', 'Ursa Major', 'Leo'];
+            let star = prompt("Enter the name of star: ");
+            let display = findConstellation(star);
+            if (display == -1) {
+                document.getElementById('resultTwo').innerHTML = "No star with name " + star;
+            } else {
+                document.getElementById('resultTwo').innerHTML = "Star in Constellation: " + constellation[display];
+            }
+
+            function findConstellation(find) {
+                return starName.indexOf(find)
+            }
+        };
+
+        function square() {
+            let a = parseFloat(prompt("Enter a number: "))
+            let b = calculation(a);
+            console.log("square of " + a + " = " + b);
+
+            function calculation(number) {
+                return number * number;
+            }
+        };
+
+        function circle() {
+            let radius = parseFloat(prompt("Enter radius of circle: "));
+            let s = findArea(radius);
+            let c = findPerimeter(radius);
+            console.log("Perimeter and Area of circle: " + c + " and " + s)
+
+            function findArea(r) {
+                return r * r * 3.14
+            }
+
+            function findPerimeter(d) {
+                return d * 2 * 3.14;
+            }
+        };
+
+        function factorial() {
+            let a = 0;
+            let testA = 0;
+            do {
+                a = parseFloat(prompt("Enter a integer"));
+                testA = parseInt(a)
+            } while (testA <= 0 || testA == null || testA != a)
+            let b = findFactorial(testA);
+            console.log("Factorial of the number " + testA + " is " + b);
+
+            function findFactorial(number) {
+                let result = 1;
+                for (i = 2; i <= number; i++) {
+                    result *= i;
+                }
+                return result;
+            }
+        };
+
+        function number() {
+            let a = prompt("Enter a character: ")
+            let b = checkNumber(a);
+            console.log(b);
+
+            function checkNumber(character) {
+                let c = parseFloat(character);
+                if (c == character) {
+                    return true;
+                } else return false + " (is NOT a number)";
+            }
+        };
+
+        function minInteger() {
+            let a = parseFloat(prompt("Enter the first number: "));
+            let b = parseFloat(prompt("Enter the second number: "));
+            let c = parseFloat(prompt("Enter the third number: "));
+            let d = testMinNumber(a, b, c);
+            console.log("Minimum of three number " + "(" + a + ", " + b + ", " + c + ") " + "is: " + d);
+
+            function testMinNumber(x, y, z) {
+                let min = x;
+                if (y > z) {
+                    if (x < z) return min;
+                    else {
+                        min = z;
+                    }
+                } else {
+                    if (x < y) return min;
+                    else min = y;
+                }
+                return min;
+            }
+        };
+
+        function checkInteger() {
+            let a = testA = '';
+            do {
+                a = prompt("Enter a number: ")
+                testA = parseFloat(a);
+            } while (testA != a || testA == null)
+
+            let b = isInteger(testA);
+            if (b) {
+                if (testA > 0) {
+                    console.log("Number " + testA + " is a integer")
+                } else if (testA == 0) {
+                    console.log("Number " + testA + " is NOT a integer")
+                } else {
+                    console.log("Number " + testA + " is a negative Integer")
+                }
+            } else {
+                console.log("Number " + testA + " is NOT a integer")
+            }
+
+            function isInteger(number) {
+                let testNumber = parseInt(number);
+                if (testNumber == number) {
+                    return true;
+                } else return false
+            }
+        };
+
+        function reverseInteger() {
+            let number = [];
+            let testNumber = [];
+            let n = parseInt(prompt("Enter numbers of array"));
+            for (i = 0; i < n; i++) {
+                do {
+                    number[i] = prompt("Enter a integer (" + (i + 1) + "/" + n + ")");
+                    testNumber[i] = parseInt(number[i])
+                } while (testNumber[i] != number[i])
+            }
+            reverseArray(number);
+            console.log(number)
+
+            function reverseArray(array) {
+                return array.reverse();
+            }
+        };
+
+        function characterInArray() {
+            let array = ['12', "f", '-2', '0', '0', '23', "hgf"];
+            let character = prompt("Enter a character", '');
+            let N = checkArray(array, character);
+            console.log(N);
+            if (N == 0) {
+                console.log("Character " + character + " is NOT in array")
+            } else if (N == 1) {
+                console.log("Character " + character + " has on array " + "(" + N + " time)")
+            } else {
+                console.log("Character " + character + " has on array " + "(" + N + " times)")
+            }
+
+            function checkArray(array, abc) {
+                let n = 0;
+                for (i = 0; i < array.length; i++) {
+                    if (array[i] == abc) {
+                        n++
+                    }
+                }
+                return n;
+            }
+        };
+    </script>
+</body>
+
+</html>
