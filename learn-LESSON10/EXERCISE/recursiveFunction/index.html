@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 10 (Kiểm tra từ đối xứng)</title>
+</head>
+
+<body>
+    <h1>Kiểm tra từ đối xứng</h1>
+    <button id="checkLetter">Start</button>
+    <p id="result">Display</p>
+
+    <script>
+        let checkLetter = document.getElementById('checkLetter');
+        let result = document.getElementById('result');
+
+        checkLetter.addEventListener('click', function () {
+            let letter = '';
+            do {
+                letter = prompt("Enter a letter: ")
+            } while (letter.length <= 1)
+            let display = true;
+            isPalindrome(letter);
+            if (display) {
+                console.log(letter + " is Palindrome")
+            } else {
+                console.log(letter + " is NOT Palindrome")
+            }
+
+            function isPalindrome(abc) {
+                if (abc.length > 1) {
+                    if (abc[0] == abc[abc.length - 1]) {
+                        abc = [...abc];
+                        abc.pop();
+                        abc.shift();
+                        abc = abc.join('');
+                        isPalindrome(abc);
+                    } else return display = false;
+                    //gán giá trị cho biến nằm ngoài hàm???
+                } else {
+                    return display = true;
+                    //đoạn code không có tác dụng, có thể xoá???
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
