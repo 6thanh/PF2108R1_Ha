@@ -21,7 +21,7 @@
     <p>Bài 9: Đảo ngược mảng số nguyên</p>
     <p>Bài 10: Kiểm tra ký tự bất kỳ trong mảng</p>
 
-    <button onclick="createFunction()">Bài 1</button>
+    <button onclick="bai1()">Bài 1</button>
     <button onclick="findStar()">Bài 2</button>
     <p id="resultTwo">Display Two</p>
     <button onclick="square()">Bài 3</button>
@@ -34,19 +34,23 @@
     <button onclick="characterInArray()">Bài 10</button>
 
     <script>
+        function bai1() {
+            let a = parseFloat(prompt("Enter the first number: "))
+            let b = parseFloat(prompt("Enter the first number: "));
+            createFunction(a, b)
+        }
+
         function createFunction(a, b) {
-            a = parseFloat(prompt("Enter the first number: "));
-            b = parseFloat(prompt("Enter the second number: "));
             if (a > b) {
                 console.log("First number bigger than second number");
             } else {
                 console.log("Total = " + (a + b))
             }
         };
+        let starName = ['Polaris', 'Aldebaran', 'Deneb', 'Vega', 'Altair', 'Dubhe', 'Regulus'];
+        let constellation = ['Ursa Minor', 'Tarurus', 'Cygnus', 'Lyra', 'Aquila', 'Ursa Major', 'Leo'];
 
         function findStar() {
-            let starName = ['Polaris', 'Aldebaran', 'Deneb', 'Vega', 'Altair', 'Dubhe', 'Regulus'];
-            let constellation = ['Ursa Minor', 'Tarurus', 'Cygnus', 'Lyra', 'Aquila', 'Ursa Major', 'Leo'];
             let star = prompt("Enter the name of star: ");
             let display = findConstellation(star);
             if (display == -1) {
@@ -54,36 +58,36 @@
             } else {
                 document.getElementById('resultTwo').innerHTML = "Star in Constellation: " + constellation[display];
             }
-
-            function findConstellation(find) {
-                return starName.indexOf(find)
-            }
         };
+
+        function findConstellation(find) {
+            return starName.indexOf(find)
+        }
 
         function square() {
             let a = parseFloat(prompt("Enter a number: "))
-            let b = calculation(a);
+            let b = calculate(a);
             console.log("square of " + a + " = " + b);
-
-            function calculation(number) {
-                return number * number;
-            }
         };
+
+        function calculate(number) {
+            return number * number;
+        }
 
         function circle() {
             let radius = parseFloat(prompt("Enter radius of circle: "));
             let s = findArea(radius);
             let c = findPerimeter(radius);
             console.log("Perimeter and Area of circle: " + c + " and " + s)
-
-            function findArea(r) {
-                return r * r * 3.14
-            }
-
-            function findPerimeter(d) {
-                return d * 2 * 3.14;
-            }
         };
+
+        function findArea(radius) {
+            return radius * radius * 3.14
+        }
+
+        function findPerimeter(radius) {
+            return radius * 2 * 3.14;
+        }
 
         function factorial() {
             let a = 0;
@@ -94,28 +98,28 @@
             } while (testA <= 0 || testA == null || testA != a)
             let b = findFactorial(testA);
             console.log("Factorial of the number " + testA + " is " + b);
-
-            function findFactorial(number) {
-                let result = 1;
-                for (i = 2; i <= number; i++) {
-                    result *= i;
-                }
-                return result;
-            }
         };
+
+        function findFactorial(number) {
+            let result = 1;
+            for (i = 2; i <= number; i++) {
+                result *= i;
+            }
+            return result;
+        }
 
         function number() {
             let a = prompt("Enter a character: ")
             let b = checkNumber(a);
             console.log(b);
-
-            function checkNumber(character) {
-                let c = parseFloat(character);
-                if (c == character) {
-                    return true;
-                } else return false + " (is NOT a number)";
-            }
         };
+
+        function checkNumber(character) {
+            let c = parseFloat(character);
+            if (c == character) {
+                return true;
+            } else return false + " (is NOT a number)";
+        }
 
         function minInteger() {
             let a = parseFloat(prompt("Enter the first number: "));
@@ -124,20 +128,21 @@
             let d = testMinNumber(a, b, c);
             console.log("Minimum of three number " + "(" + a + ", " + b + ", " + c + ") " + "is: " + d);
 
-            function testMinNumber(x, y, z) {
-                let min = x;
-                if (y > z) {
-                    if (x < z) return min;
-                    else {
-                        min = z;
-                    }
-                } else {
-                    if (x < y) return min;
-                    else min = y;
-                }
-                return min;
-            }
         };
+
+        function testMinNumber(x, y, z) {
+            let min = x;
+            if (y > z) {
+                if (x < z) return min;
+                else {
+                    min = z;
+                }
+            } else {
+                if (x < y) return min;
+                else min = y;
+            }
+            return min;
+        }
 
         function checkInteger() {
             let a = testA = '';
@@ -159,13 +164,14 @@
                 console.log("Number " + testA + " is NOT a integer")
             }
 
-            function isInteger(number) {
-                let testNumber = parseInt(number);
-                if (testNumber == number) {
-                    return true;
-                } else return false
-            }
         };
+
+        function isInteger(number) {
+            let testNumber = parseInt(number);
+            if (testNumber == number) {
+                return true;
+            } else return false
+        }
 
         function reverseInteger() {
             let number = [];
@@ -179,11 +185,11 @@
             }
             reverseArray(number);
             console.log(number)
-
-            function reverseArray(array) {
-                return array.reverse();
-            }
         };
+
+        function reverseArray(array) {
+            return array.reverse();
+        }
 
         function characterInArray() {
             let array = ['12', "f", '-2', '0', '0', '23', "hgf"];
@@ -197,17 +203,17 @@
             } else {
                 console.log("Character " + character + " has on array " + "(" + N + " times)")
             }
-
-            function checkArray(array, abc) {
-                let n = 0;
-                for (i = 0; i < array.length; i++) {
-                    if (array[i] == abc) {
-                        n++
-                    }
-                }
-                return n;
-            }
         };
+
+        function checkArray(array, abc) {
+            let n = 0;
+            for (i = 0; i < array.length; i++) {
+                if (array[i] == abc) {
+                    n++
+                }
+            }
+            return n;
+        }
     </script>
 </body>
 

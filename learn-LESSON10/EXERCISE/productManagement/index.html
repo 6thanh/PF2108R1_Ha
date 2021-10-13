@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 10 (Ứng dụng quản lý sản phẩm sử dụng hàm)</title>
+</head>
+
+<body>
+    <h1>Ứng dụng quản lý sản phẩm sử dụng hàm</h1>
+    <!-- <button onclick="displayProduct()">Display product</button> -->
+    <br> <br>
+    <input type="text" id="inputProduct" placeholder="Name Product">
+    <button onclick="addProduct()">Add product</button>
+
+    <p id="display">Display</p>
+    <!-- <button onclick="modifiedProduct()">Edit</button> -->
+    <!-- <button onclick="delProduct()">Delete</button> -->
+
+    <script>
+        let inputProduct = document.getElementById('inputProduct');
+        let display = document.getElementById('display');
+        let products = ["Sony Xperia", "Samsung Galaxy", "Nokia 6"];
+        let tableProduct = '';
+        let newproduct = '';
+        let doneModified = '';
+        displayProduct();
+
+        function displayProduct() {
+            tableProduct = '<table width="50%">'
+            for (let i = 0; i < products.length; i++) {
+                makeTable(i);
+            }
+            tableProduct += '</table>'
+            display.innerHTML = tableProduct;
+        };
+
+        function makeTable(i) {
+            tableProduct += '<tr>'
+            tableProduct += '<td>' + (i + 1) + '</td>' +
+                '<td>' + products[i] + '</td>' +
+                '<td>' + '<button onclick="modifiedProduct(' + i + ')">Edit</button>' + '</td>' +
+                '<td>' + '<button onclick="delProduct(' + i + ')">Delete</button>' + '</td>'
+            tableProduct += '</tr>'
+        }
+
+        function addProduct() {
+            newproduct = inputProduct.value;
+            inputProduct.value = '';
+            products.push(newproduct);
+            displayProduct();
+            //alert("Add successful!")            doneModified = '';
+            doneModified = '';
+        }
+
+        function modifiedProduct(order) {
+            tableProduct = '<table width="50%">'
+            for (let i = 0; i < products.length; i++) {
+                if (i == order) {
+                    tableProduct += '<tr>'
+                    tableProduct += '<td>' + (i + 1) + '</td>' +
+                        '<td>' + '<input class="modified" value= "' + products[i] + '">' + '</td>' +
+                        '<td>' + '<button onclick="doneModifiedProduct(' + i + ')">Done</button>' + '</td>' +
+                        '<td>' + '<button onclick="delProduct(' + i + ')">Delete</button>' + '</td>'
+                    tableProduct += '</tr>'
+                } else makeTable(i);
+            }
+            tableProduct += '</table>'
+            display.innerHTML = tableProduct;
+            doneModified = document.getElementsByClassName('modified');
+            // console.log(doneModified.innerHTML);
+        }
+
+        function doneModifiedProduct(order) {
+            for (let i = 0; i < products.length; i++) {
+                if (i == order) {
+                    products[order]=doneModified[order].value;
+                } else {
+                    makeTable(i);
+                }
+            }
+            displayProduct();
+            console.log(order);
+        }
+
+        function delProduct(order) {
+            products.splice(order, 1);
+            displayProduct();
+            //alert("Delete successful!")
+        }
+    </script>
+
+</body>
+
+</html>
