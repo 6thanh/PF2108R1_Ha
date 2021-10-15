@@ -1,0 +1,32 @@
+table{
+    width: 400px;
+    border: 1px solid blue;
+    border-collapse: collapse;
+}
+table tr {
+    height: 2em;
+    line-height: 2em;
+}
+table tr td:nth-child(3){
+    width: 5em;            
+}
+table tr td:nth-child(2){
+    width: 15em;            
+}
+table tr td:nth-child(3) button{
+    margin-left: 1em;
+}
+table tr:nth-child(even){
+    background: #f2f2f2;
+}
+button{
+    background: #50af50;
+    border: none;
+    width: auto;
+    height: 1.8em;
+    border-radius: 0.3em;
+    color: white;
+}
+input:focus{
+    outline: none;
+}
