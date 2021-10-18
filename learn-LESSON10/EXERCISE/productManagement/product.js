@@ -7,7 +7,8 @@ let inputProduct = document.getElementById('inputProduct');
         displayProduct();
 
         function displayProduct() {            
-            tableProduct = '<table>'            
+            tableProduct = '<table>'   
+            products.sort();              
             makeTableTh();
             for (let i = 0; i < products.length; i++) {
                 makeTable(i);
@@ -17,13 +18,12 @@ let inputProduct = document.getElementById('inputProduct');
         };
 
         function makeTableTh() {
-            products.sort();
             tableProduct += '<tr>'
             tableProduct += '<th colspan="2"> Product Name'+'</th>'
             tableProduct += '<th colspan="2">' + products.length +' products</th>'
             tableProduct += '</tr>'
         }
-        function makeTable(i) {            
+        function makeTable(i) {       
             tableProduct += '<tr>'
             tableProduct += '<td>' + (i + 1) + '</td>' +
                 '<td>' + products[i] + '</td>' +
@@ -70,5 +70,4 @@ let inputProduct = document.getElementById('inputProduct');
                 displayProduct();
                 alert("Delete successful!")
             }
-
         }

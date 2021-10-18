@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Move</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="400px" height="300px" style="border: 1px solid gray;"></canvas>
+    <p>(https://v1study.com/html5-chuyen-dong-trong-canvas.html)</p>
+
+    <script>
+        function Ball(mapWidth, mapHeight) {
+            this.mapWidth = mapWidth;
+            this.mapHeight = mapHeight;
+            this.radius = 20;
+            this.speedX = 3;
+            this.speedY = 3;
+            this.cx = Math.floor(Math.random() * (this.mapWidth - 2 * this.radius)) + this.radius;
+            this.cy = Math.floor(Math.random() * (this.mapHeight - 2 * this.radius)) + this.radius;
+        }
+
+        Ball.prototype.draw = function (context, alpha) {
+            if (!alpha)
+                alpha = 255;
+            context.beginPath();
+            context.fillStyle = "rgba(255, 100, 100," + alpha + ")";
+            context.arc(this.cx, this.cy, this.radius, 0, Math.PI * 2, true);
+            context.closePath();
+            context.fill();
+        }
+
+        Ball.prototype.move = function () {
+            this.cx += this.speedX;
+            this.cy += this.speedY;
+            this.left = this.cx - this.radius;
+            this.top = this.cy - this.radius;
+            this.right = this.cx + this.radius;
+            this.bottom = this.cy + this.radius;
+        }
+
+        Ball.prototype.checkCollision = function (shapes) {
+            if (this.left <= 0 || this.right >= this.mapWidth)
+                this.speedX = -this.speedX;
+            if (this.top <= 0 || this.bottom >= this.mapHeight)
+                this.speedY = -this.speedY;
+            for (var i = 0; i < shapes.items.length; i++) {
+                var item = shapes.items[i];
+                var hCollision = false;
+                var vCollision = false;
+                if (this.right >= item.left && this.left <= item.right && // the ball is
+                    ((this.cy < item.top && this.bottom >= item.top) || // on or
+                        (this.cy > item.bottom && this.top <= item.bottom)))
+                // under the rectangle
+                {
+                    this.speedY = -this.speedY;
+                    vCollision = true;
+                }
+
+                if (this.bottom >= item.top && this.top <= item.bottom &&
+                    // the ball is in the
+                    ((this.cx < item.left && this.right >= item.left) ||
+                        // left or
+                        (this.cx > item.right && this.left <= item.right))) // right side of the rectangle
+                {
+                    this.speedX = -this.speedX;
+                    hCollision = true;
+                }
+                if (hCollision || vCollision)
+                    break;
+            }
+        }
+
+        function traceBall(ball) {
+            var b = new Ball;
+            b.cx = ball.cx;
+            b.cy = ball.cy;
+            _balls.push(b);
+            if (_balls.length > 10)
+                _balls.splice(0, 1);
+        }
+    </script>
+    <script>
+        var _canvas;
+        var _context;
+        var _ball;
+
+        function draw() {
+            _context.clearRect(0, 0, _canvas.width, _canvas.height);
+            _ball.draw(_context);
+        }
+
+        function update() {
+            _ball.move();
+            _ball.checkCollision();
+            draw();
+        }
+
+        window.onload = function () {
+            var interval = 10;
+            _canvas = document.getElementById("canvas");
+            _context = _canvas.getContext("2d");
+            _ball = new Ball(_canvas.width, _canvas.height);
+            setInterval("update()", interval);
+        }
+    </script>
+</body>
+
+</html>
