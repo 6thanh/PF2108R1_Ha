@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 11 (Di chuyển hình chữ nhật)</title>
+</head>
+
+<body>
+    <h1>Di chuyển hình chữ nhật</h1>
+    <canvas id="game" width="800" height="600" style="border: 3px solid #000000"></canvas>
+
+    <script>
+        let gameContext = document.getElementById('game').getContext('2d');
+        let yDistance = 1;
+        let carYPosition = 20;
+        let topGame = 0, bottomGame = 600;
+        let timeLoop = 10;
+
+        function drawCar(){
+            gameContext.beginPath();
+            gameContext.fillStyle = '#fa4b2a';
+            gameContext.fillRect(20, carYPosition, 150, 100);
+        }
+
+        function moveCar(){
+             // Xoá hình chữ nhật đã vẽ trước đó
+            gameContext.clearRect(20, carYPosition, 150, 100);
+            carYPosition += yDistance;
+            drawCar();
+            if(carYPosition<topGame||carYPosition+100>bottomGame){
+                yDistance=-yDistance
+            }
+        }
+
+        setInterval(moveCar, timeLoop);           
+    </script>
+</body>
+
+</html>
