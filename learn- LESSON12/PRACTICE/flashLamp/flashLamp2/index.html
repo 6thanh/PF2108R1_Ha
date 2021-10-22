@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 12 (Xây dựng lớp mô phỏng sự hoạt động của đèn pin)</title>
+</head>
+
+<body>
+    <script src="js/classBattery.js"></script>
+    <script src="js/classFlashLamp.js"></script>
+    <script>
+        let battery = new Battery()
+        //battery.setEnergy(prompt("Enter number 0-10:"))
+        battery.setEnergy(2)
+        console.log(battery)
+
+        let flashLamp = new FlashLamp()
+        flashLamp.setBattery(battery.getEnergy());
+        console.log(flashLamp.getBatteryInfo())
+
+        let turnFlash = true;
+        do {
+            turnFlash = confirm("Turn on flash lamp?")
+            if (turnFlash) {
+                flashLamp.turnOn();
+                flashLamp.light();
+                battery.decreaseEnergy();
+                console.log(flashLamp.getBatteryInfo())
+            } else {
+                flashLamp.turnOff();
+                flashLamp.light();
+                console.log(flashLamp.getBatteryInfo())
+            }
+        } while (battery.getEnergy() > 0)
+    </script>
+</body>
+
+</html>

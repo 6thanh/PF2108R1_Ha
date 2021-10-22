@@ -62,6 +62,7 @@
         document.write("Turn on<br/>");
         flashLamp.turnOn();
         flashLamp.light();
+        battery.decreaseEnergy();
         document.write("Battery info:" + flashLamp.getBatteryInfo() + "<br/>");
 
         document.write("Turn off<br/>");
