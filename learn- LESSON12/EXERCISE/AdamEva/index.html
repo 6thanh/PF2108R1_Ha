@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 12 (Phát triển ứng dụng nhỏ mô phỏng câu chuyện Adam và Eva)</title>
+</head>
+
+<body>
+    <script>
+        class Apple {
+            constructor(apple) {
+                this.apple = apple;
+            }
+            decreaseApple() {
+                if (this.apple > 0) {
+                    this.apple--
+                }
+            }
+            isEmptyApple() {
+                if (this.apple > 0) {
+                    return true
+                } else return false;
+            }
+            getWeightApple() {
+                return this.apple;
+            }
+        }
+        class Human {
+            constructor(name, gender, weight) {
+                this.name = name;
+                this.gender = gender;
+                this.weight = weight;
+            }
+            isMale() {
+                if (this.gender == 'male') return true;
+                else return false;
+            }
+            setGender(gender) {
+                this.gender = gender;
+            }
+            checkApple() {
+                return apple.isEmptyApple();
+            }
+            eatApple() {
+                if (apple.isEmptyApple()) {
+                    apple.decreaseApple();
+                    this.weight++
+                } else {
+                    alert("Apple is empty!")
+                }
+            }
+            say() {
+                console.log("Hello, I\'m " + this.name)
+            }
+            setName(name) {
+                this.name = name;
+            }
+            getName() {
+                return this.name;
+            }
+            setWeight(weight) {
+                this.weight = weight;
+            }
+            getWeight() {
+                return this.weight;
+            }
+        }
+        let apple = new Apple(9);
+        console.log(apple)
+        let adam = new Human('Adam', 'male', 60);
+        let eva = new Human('Eva', 'female', 50);
+        console.log(adam.checkApple());
+        console.log(adam.isMale());
+        adam.say();
+        do {
+            adam.eatApple();
+            eva.eatApple()
+        } while (apple.isEmptyApple())
+        console.log(adam.getWeight());
+        console.log(eva.getWeight());
+        console.log(apple.getWeightApple());
+    </script>
+</body>
+
+</html>
