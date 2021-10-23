@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 12 (Xây dựng lớp mô tả Temperature)</title>
+</head>
+
+<body>
+
+    <script>
+        class Temperature {
+            constructor(celcius) {
+                this.celcius = celcius;
+            }
+            convertToF() {
+                return parseFloat(this.celcius) * 1.8 + 32;
+            }
+            convertToKenvin() {
+                return parseFloat(this.celcius) + 273.15;
+            }
+        }
+
+        let celcius = 0;
+        do {
+            celcius = prompt("Enter a Temperature", 25);
+        } while (celcius < -273 || celcius == null)
+        let temperature = new Temperature(celcius);
+        let temperatureF = temperature.convertToF();
+        let temperatureK = temperature.convertToKenvin();
+        document.write("Fahrenheit: " + temperatureF + ", Kenvin: " + temperatureK);
+    </script>
+
+</body>
+
+</html>
