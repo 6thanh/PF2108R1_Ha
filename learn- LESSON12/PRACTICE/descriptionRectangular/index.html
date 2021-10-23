@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 12 (Xây dựng lớp mô tả hình chữ nhật)</title>
+    <style>
+        #myCanvas {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="number" id="widthRect" placeholder="width" onchange="drawRectangular()">
+    <input type="number" id="heightRect" placeholder="height" onchange="drawRectangular()">
+    <br>
+    <p id="result"></p>
+    <br>
+    <canvas id="myCanvas" style="border: 1px solid green"></canvas>
+
+
+    <script>
+        let result = document.getElementById('result');
+
+        class Rectangular {
+            constructor(width, height) {
+                this.width = parseFloat(width);
+                this.height = parseFloat(height);
+            }
+            getArea() {
+                return this.width * this.height;
+            }
+            getPerimeter() {
+                return (this.width + this.height) * 2;
+            }
+        }
+
+        function drawRectangular() {
+            let widthRect = document.getElementById('widthRect').value;
+            let heightRect = document.getElementById('heightRect').value;
+            if (widthRect != 0 && widthRect != null && heightRect != 0 && heightRect != null) {
+                let rectangular = new Rectangular(widthRect, heightRect);
+                result.innerHTML = "Area: " + rectangular.getArea() + "; Perimeter: " + rectangular.getPerimeter();
+                drawInCanvas(widthRect, heightRect);
+            }
+        }
+        
+        function drawInCanvas(widthRect, heightRect) {
+            let ctx = document.getElementById('myCanvas').getContext('2d');
+            ctx.beginPath();
+            ctx.fillStyle = "pink";
+            ctx.fillRect(0, 0, widthRect, heightRect);
+
+        }
+
+        // rectangular.prototype.drawRectangular() = function(){
+
+        // }
+    </script>
+</body>
+
+</html>
