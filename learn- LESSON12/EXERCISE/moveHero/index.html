@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 12 (Game đơn giản – di chuyển đối tượng)</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        #myArea {
+            width: 500px;
+            height: 300px;
+            border: 1px solid green;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Di chuyển đối tượng</h1>
+    <div id="myArea">
+        <p id="result"></p>
+    </div>
+
+
+
+    <script>
+        class Hero {
+            constructor(img, size, top, left) {
+                this.img = img;
+                this.size = size;
+                this.left = left;
+                this.top = top;
+                this.speed = 100;
+            }
+            drawHero() {
+                return '<img src="' + this.img + '" alt="hero" id="hero" style="width:' +
+                    this.size + 'px; height:' + this.size + 'px; position: absolute; left:' +
+                    this.left + 'px; top: ' + this.top + 'px">'
+            }
+            moveHorizontal() {
+                this.left += this.speed;
+                console.log("Ok, left: " + this.left);
+            }
+            moveVertical() {
+                this.top += this.speed;
+                console.log("Ok, top: " + this.top);
+            }
+        }
+        let hero = new Hero('logo.png', 100, 10, 10);
+        let result = document.getElementById('result');
+        start()
+
+        function start() {
+            if (hero.left < 0 && hero.top == 10) {
+                hero.speed = -hero.speed;
+                console.log(hero.speed);
+            }
+            if (hero.left >= 500 - hero.size &&
+                hero.top > 300 - hero.size) {
+                hero.speed = -hero.speed;
+                
+                console.log(hero.speed);
+            }
+            if (hero.top == -90 || hero.top == 10 || hero.top > 300 - hero.size) {
+                hero.moveHorizontal()
+            }
+            if (hero.left == -90 || hero.left > 500 - hero.size) {
+                hero.moveVertical()
+            }
+
+            result.innerHTML = hero.drawHero();
+            setTimeout(start, 500)
+        }
+    </script>
+</body>
+
+</html>
