@@ -27,31 +27,35 @@
         }
         class SwitchButton{
             constructor(){}
-            connectToLamp(){
-                if(electricLamp.status){
-                    result.innerHTML = "Status of Lamp: ON"
-                } else {
-                    result.innerHTML = "Status of Lamp: OFF"
-                }
+            connectToLamp(electricLamp){
+                this.lamp = electricLamp;
+                // if(this.lamp.status){
+                //     result.innerHTML = "Status of Lamp: ON"
+                // } else {
+                //     result.innerHTML = "Status of Lamp: OFF"
+                // }
             }
             switchOn(){
-                electricLamp.turnOn();
+                this.lamp.turnOn();
             }
             switchOff(){
-                electricLamp.turnOff();
+                this.lamp.turnOff();
             }
         }
         let electricLamp = new ElectricLamp(false);
         let switchButton = new SwitchButton();
+        switchButton.connectToLamp(electricLamp)
         switchBtn.addEventListener('click', function(){
             if(!electricLamp.status){
                 switchButton.switchOn();
                 this.innerText = "TURN OFF"
+                result.innerHTML = "Status of Lamp: ON"
             } else {
                 switchButton.switchOff();
                 this.innerText = "TURN ON"
+                result.innerHTML = "Status of Lamp: OFF"
             }
-            switchButton.connectToLamp();
+            // switchButton.connectToLamp();
             console.log(electricLamp);
         })
 
