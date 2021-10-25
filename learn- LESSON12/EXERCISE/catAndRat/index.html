@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN; LESSON 12 (Phát triển ứng dụng mô phỏng lại quá trình mèo bắt chuột và ăn chuột)</title>
+</head>
+
+<body>
+    <h1>Story of "MÈO MƯỚP"</h1>
+    <button onclick="action()">Start</button>
+
+    <script>
+        class Rat {
+            constructor(nameRat, weightRat, speedRat) {
+                this.nameRat = nameRat;
+                this.weightRat = weightRat;
+                this.speedRat = speedRat;
+                this.isLive = function (speedRat) {
+                    if (this.speedRat == 0) {
+                        return false;
+                    } else return true;
+                };
+            }
+            soundRat() {
+                return "chit, chit"
+            }
+        }
+        class Cat {
+            constructor(name, weight, maxspeed) {
+                this.name = name;
+                this.weight = weight;
+                this.maxspeed = maxspeed;
+            }
+            sound() {
+                return "meow, meow"
+            }
+            catchRat(rat) {
+                if (this.maxspeed > rat.speedRat) {
+                    return true;
+                } else return false;
+            }
+            eatRat(rat) {
+                if (rat.isLive) {
+                    this.weight += rat.weightRat;
+                    rat.weightRat = 0;
+                } else {
+                    console.log(rat.nameRat + " is dead!")
+                }
+            }
+        }
+        let cat = new Cat('Mèo mướp', 3, 50);
+        let countOfMouse = 0;
+        let r = []
+        let mouseDead = [];
+        let mouseEscape = [];
+
+
+        function creatMouse() {
+            countOfMouse = parseInt(prompt("Enter nunber of mice: "));
+            for (let i = 0; i < countOfMouse; i++) {
+                let speedRat = Math.floor(Math.random() * 100);
+                let weightRat = 0;
+                do {
+                    weightRat = Math.floor(Math.random() * 10) / 10;
+                } while (weightRat == 0)
+                r[i] = new Rat('r' + i, weightRat, speedRat);
+
+            }
+        }
+
+        function action() {
+            creatMouse();
+            console.log(r[0].nameRat + ": " + r[0].soundRat());
+            console.log(cat.name + ": " + cat.sound());
+            for (let i = 0; i < countOfMouse; i++) {
+                if (!r[i].isLive()) {
+                    mouseDead.push(r[i].nameRat)
+                } else {
+                    if (cat.catchRat(r[i])) {
+                        cat.eatRat(r[i]);
+                    } else mouseEscape.push(r[i].nameRat)
+                }
+            }
+            if (mouseDead.length == 0) {
+                console.log("Not mouse is dead");
+            } else {
+                console.log("Mice are dead: " + mouseDead);
+            }
+            console.log("Mice are escape: " + mouseEscape);
+
+            console.log("The mice were caught: " + (countOfMouse - (mouseDead.length + mouseEscape.length)))
+            console.log("Weight of 'Mèo mướp': " + cat.weight)
+        }
+    </script>
+</body>
+
+</html>
