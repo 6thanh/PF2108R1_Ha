@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON 12 (Phát triển chương trình sử dụng Remote để điều khiển Tivi)</title>
+    <style>
+        #displayTivi {
+            width: 100px;
+            height: 100px;
+            margin: auto;
+            background: black;
+            line-height: 100px;
+            text-align: center;
+            font-size: 50px;
+            color: crimson;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+
+        #volumeTivi {
+            text-align: center;
+        }
+
+        .remote {
+            width: 200px;
+            height: 100px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="displayTivi"></p>
+    <br>
+    <p id="volumeTivi">Volume:</p><br>
+    <div class="remote">
+        <button onclick="turnOn()">ON</button>
+        <button onclick="turnOff()">OFF</button>
+        <button onclick="number(1)" id="1">1</button>
+        <button onclick="number(2)" id="2">2</button>
+        <button onclick="number(3)" id="3">3</button>
+        <button onclick="number(4)" id="4">4</button>
+        <br> <br>
+        <button onclick="addVolume()">Volume(+)</button>
+        <button onclick="reduceVolume()">Volume(-)</button>
+    </div>
+
+    <script>
+        let displayTivi = document.getElementById('displayTivi');
+        let volumeTivi = document.getElementById('volumeTivi');
+        let curentChannel = 0;
+        let currentVolume = 0;
+        let numberOfChannel = [];
+        for (let i = 1; i < 5; i++) {
+            numberOfChannel[i - 1] = document.getElementById(i).id
+        }
+        
+        class Remote {
+            constructor() {
+                this.isTurnOn = false;
+                this.volume = 0;
+
+            }
+            turnOn() {
+                return this.isTurnOn = true;
+            }
+            turnOff() {
+                return this.isTurnOn = false;
+            }
+            addVolume() {
+                return this.volume++
+            }
+            reduceVolume() {
+                if (this.volume > 0) {
+                    return this.volume--
+                } else {
+                    alert("Volume is turnOff")
+                }
+            }
+            setChannel(channel) {
+                return this.channel = channel;
+            }
+        }
+        class Tivi {
+            constructor(channel, volume, isTurnOn) {
+                this.channel = channel;
+                this.volume = volume;
+                this.isTurnOn = function () {
+                    if (remote.isTurnOn) return true;
+                    else return false;
+                }
+            }
+            changeChannel() {
+                this.channel = remote.channel;
+                displayTivi.innerText = this.channel;
+            }
+            changeVolume() {
+                this.volume = remote.volume;
+                volumeTivi.innerText = "Volume: " + this.volume;
+            }
+            turnOn(){
+                displayTivi.style.background = "cornflowerblue" 
+            }
+            turnOff(){
+                displayTivi.style.background = "black"
+            }
+        }
+        let remote = new Remote();
+        let tivi = new Tivi(1,remote.volume, false);
+        volumeTivi.innerText = "Volume: " + tivi.volume;
+        
+        function turnOn() {
+            remote.turnOn()
+            displayTivi.innerText = tivi.channel;
+            tivi.turnOn()
+        }
+
+        function turnOff() {
+            remote.turnOff();
+            displayTivi.innerText = '';
+            tivi.turnOff()
+        }
+
+        function checkTurnOn() {
+            if (!tivi.isTurnOn()) {
+                alert("Please turnOn tivi")
+            }
+        }
+        function number(i) {
+            checkTurnOn()
+            remote.setChannel(numberOfChannel[i - 1])
+            tivi.changeChannel()
+        }
+
+        function addVolume() {
+            checkTurnOn()
+            remote.addVolume();
+            tivi.changeVolume();
+        }
+
+        function reduceVolume() {
+            checkTurnOn()
+            remote.reduceVolume();
+            tivi.changeVolume();
+        }
+    </script>
+</body>
+
+</html>
