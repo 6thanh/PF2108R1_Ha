@@ -16,7 +16,7 @@
             }
             decreaseApple() {
                 if (this.apple > 0) {
-                    this.apple--
+                    this.apple--                    
                 }
             }
             isEmptyApple() {
@@ -49,7 +49,7 @@
                     apple.decreaseApple();
                     this.weight++
                 } else {
-                    alert("Apple is empty!")
+                    console.log("Apple is empty!");                    
                 }
             }
             say() {
@@ -75,10 +75,12 @@
         console.log(adam.checkApple());
         console.log(adam.isMale());
         adam.say();
-        do {
+        while (apple.isEmptyApple()) {
             adam.eatApple();
+            // console.log(adam.name + " eat a piece of apple")
             eva.eatApple()
-        } while (apple.isEmptyApple())
+            // console.log(eva.name + " eat a piece of apple")
+        } 
         console.log(adam.getWeight());
         console.log(eva.getWeight());
         console.log(apple.getWeightApple());
