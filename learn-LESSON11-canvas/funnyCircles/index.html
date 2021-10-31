@@ -48,21 +48,35 @@
             this.radius = radius;
         }
 
+        // function createCircle() {
+        //     let ctx = myCanvas.getContext("2d");
+        //     let radius = Math.floor(Math.random() * 80);
+        //     let color = getRandomColor();
+        //     let x = Math.random() * window.innerWidth;
+        //     let y = Math.random() * window.innerHeight;
+        //     //let part = Math.random() * 2;
+            
+        //     let circle = new Circle(x, y, radius);
+        //     ctx.beginPath();
+        //     ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+        //     ctx.fillStyle = color;
+        //     ctx.fill();
+        // }
+        
         function createCircle() {
-            let ctx = myCanvas.getContext("2d");
-            let radius = Math.floor(Math.random() * 80);
-            let color = getRandomColor();
+            let ctx = myCanvas.getContext('2d')
             let x = Math.random() * window.innerWidth;
             let y = Math.random() * window.innerHeight;
-            //let part = Math.random() * 2;
-            
-            let circle = new Circle(x, y, radius);
+            let radius = Math.floor(Math.random() * 100);
+            let circle = new Circle(x, y, radius)
+            let color = getRandomColor()
             ctx.beginPath();
             ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
             ctx.fillStyle = color;
+            console.log(x,y,radius)
+            console.log(color)
             ctx.fill();
         }
-        
         
         
         function getRandomColor() {

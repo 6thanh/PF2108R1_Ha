@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN: LESSON13 (Va chạm giữa hai hình tròn)</title>
+    <!-- <style>
+        #myCanvas {
+            width: 1368px;
+            height: 768px;
+            border: 1px solid #d3d3d3;
+        }
+    </style> -->
+</head>
+
+<body>
+    <h1>Circle Collision</h1>
+    <!-- <canvas id="myCanvas"></canvas> -->
+    <canvas id="myCanvas" width="1368px" height="768px" style="border: 1px solid #d3d3d3;"></canvas>
+
+    <script src="createCircle.js"></script>
+    <script>
+        let circle1 = createCircle();
+        let circle2 = createCircle();
+        let x = Math.abs(circle1.x - circle2.x);
+        let y = Math.abs(circle1.y - circle2.y);
+        let r = circle1.radius + circle2.radius;
+        let AB = Math.sqrt(x * x + y * y);
+        console.log("Total radius: " + r)
+        console.log("Distance: " + AB)
+        if (AB > r) {
+            console.log("Two circles do NOT touch each other")
+        } else {
+            console.log("Two circles touching each other")
+        }
+    </script>
+</body>
+
+</html>
