@@ -6,6 +6,7 @@ let speedInput = 0;
 let interval;
 let time = 0;
 let countTime;
+let isWin = 'KẾT THÚC!';
 
 startGame.addEventListener('click', function () {
     startGame.innerText = 'START';
@@ -61,6 +62,7 @@ function start() {
 
     function update() {
         isPlay = checkPlay();
+        checkWin();
         if (isPlay) {
             ball.moveBall();
             ball.checkCollision();
@@ -81,22 +83,32 @@ function start() {
         audio.innerHTML = '';
     };
 
-    // ========== kiểm tra bóng chạm đáy ==========
+// ========== kiểm tra bóng chạm đáy ==========
     function checkPlay() {
         if (ball.distanceX == 0 && ball.distanceX == 0) {
-            setTimeout(endGame, 500);
+            pause();
+            myCanvas.innerHTML = audio.innerHTML = '<audio autoplay source src="audio/Mario.mp3" type="audio/mp3"></audio>';
+            setTimeout(endGame(isWin,'blue'), 500);
             return false
-        } else return true
+        } else return true       
     };
 
-    function endGame() {
-        myCanvas.innerHTML = audio.innerHTML = '<audio autoplay source src="audio/Mario.mp3" type="audio/mp3"></audio>';
+    function checkWin(){
+        if (time == 10) { //thay đổi theo yêu cầu
+            isWin = 'CHÚC MỪNG!';
+            pause();
+            myCanvas.innerHTML = '<audio autoplay source src="audio/Win.mp3" type="audio/mp3"></audio>';
+            setTimeout(endGame(isWin,'red'), 500);
+        }
+    }
+// ========== thông báo kết thúc ==========
+    function endGame(isWin,color) {
         ctx.beginPath();
         ctx.fillStyle = "#FFDF91"
         ctx.fillRect(150, 80, 210, 220);
-        ctx.fillStyle = "blue";
+        ctx.fillStyle = color;
         ctx.font = '25px serif';
-        ctx.fillText("KẾT THÚC!", widthCanvas / 2 - 60, heightCanvas / 2 - 120);
+        ctx.fillText(isWin, widthCanvas / 2 - 65, heightCanvas / 2 - 120);
         ctx.fillStyle = "blue";
         ctx.font = '20px serif';
         ctx.fillText("Điểm của bạn là: " + time, widthCanvas / 2 - 80, heightCanvas / 2 - 80);
