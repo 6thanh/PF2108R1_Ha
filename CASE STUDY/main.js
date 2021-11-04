@@ -18,6 +18,7 @@ startGame.addEventListener('click', function () {
     } else speed.value = '';
 });
 
+// ========= chọn tốc độ ==========
 function chooseSpeed() {
     speedInput = speed.value;
     speedBall = parseFloat(speedInput);
@@ -43,6 +44,7 @@ function btnRestart() {
     })
 };
 
+// ========== bắt đầu chơi ==========
 function start() {
     bar.drawBar();
     ball.drawBall();
@@ -51,7 +53,7 @@ function start() {
     play();
 
     function play() {
-        isPlay = true;
+        isPlay = true
         countTime = setInterval(displayScores, 1000);
         interval = setInterval(update, speedBall);
         audio.innerHTML = '<audio loop autoplay source src="audio/Game-Boom-online.mp3" type="audio/mp3"></audio>';
@@ -67,23 +69,24 @@ function start() {
     };
 
     function displayScores() {
-        time++;
-        speedBall--;
+        time++
+        speedBall--
         scores.innerHTML = time;
     };
 
     function pause() {
-        isPlay = false;
+        isPlay = false
         clearInterval(interval);
         clearInterval(countTime);
         audio.innerHTML = '';
     };
 
+    // ========== kiểm tra bóng chạm đáy ==========
     function checkPlay() {
         if (ball.distanceX == 0 && ball.distanceX == 0) {
             setTimeout(endGame, 500);
-            return false;
-        } else return true;
+            return false
+        } else return true
     };
 
     function endGame() {
@@ -128,6 +131,7 @@ function start() {
                     break;
             }
         } else {
+// ========== trở lại game ==========
             switch (keydown.key) {
                 case 'ArrowUp':
                 case 'ArrowDown':
