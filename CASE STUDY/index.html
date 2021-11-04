@@ -5,99 +5,114 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>Case study (Nguyễn Thanh Hà)</title>
     <style>
-        /* * {
-            margin: 0px;
-            padding: 0px;
-            box-sizing: border-box;
-        }
-
-        #all {
-            width: 400px;
-            height: 300px;
-            margin: 30px auto;
+        .container {
+            width: 800px;
+            min-height: 400px;
+            margin: auto;
             display: grid;
-            grid-template-columns: 300px 100px;
+            grid-template-columns: auto auto;
         }
 
-        #myCanvas {
-            width: 100%;
-            height: 300px;
-            border: 1px solid grey;
-            background: honeydew;
+        #content {
+            box-sizing: border-box;
+            position: relative;
+            width: 250px;
+            min-height: 500px;
+            background: #91684A;
+            padding: 1rem;
+            line-height: 1rem;
         }
 
-        #scores {
-            width: 100%;
-            height: 300px;
-            background: lemonchiffon;
-            border: 1px solid grey;
+        #content p{
             text-align: center;
-        } */
+            color: #FFDF91;
+        }
+
+        #startGame {
+            display: block;
+            position: absolute;
+            top: 220px;
+            left: -325px;
+            width: 100px;
+            height: 40px;
+            background: #FFDF91;
+            font-weight: bold;
+        }
+        #speed{
+            display: none;
+            position: absolute;
+            top: 300px;
+            left: -370px;
+            width: auto;
+            height: 40px;
+            background: #FFDF91;
+            font-weight: bold;
+            text-align: center;
+        }
+        #speed:focus{
+            outline: none;
+        }
+        #instruct{
+            margin-top: 150px;
+        }
+        #instruct span, h3 {
+            color: #FFDF91;
+            text-align: center;
+        }
+        i{
+            color: black;
+        }
+        #radio {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.0001;
+        }
     </style>
+
 </head>
 
 <body>
 
-    <canvas id="myCanvas" width="400px" height="400px" style="border: 1px solid black"></canvas>
-    <button onclick="stop()">Stop</button>
-
-    <script>
-        let ctx = document.getElementById('myCanvas').getContext('2d');
-        let scores = document.getElementById('scores');
-
-        //prompt width-height Canvas???
-
-        class Ball {
-            constructor(widthCanvas, heightCanvas, speed) {
-                this.widthCanvas = widthCanvas;
-                this.heightCanvas = heightCanvas;
-                this.speedX = speed;
-                this.speedY = -speed;
-                this.radius = 10;
-                this.scrollBarY = 300; // thay đổi sau khi có thanh trượt(top)
-                this.x = widthCanvas / 2;
-                this.y = this.scrollBarY - this.radius;
-            }
-
-            drawBall() {
-                // ctx.clearArc(this.x-this.speedX, this.y-this.speedY, this.radius, 0, 2 * Math.PI, true);
-
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, true);
-                ctx.fillStyle = "green";
-                ctx.fill();
-            }
-            moveBall() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                this.ballTop = this.y - this.radius;
-                this.ballRight = this.x + this.radius;
-                this.ballBottom = this.y + this.radius;
-                this.ballLeft = this.x - this.radius;
-            }
-
-            checkCollision() {
-                if (this.ballLeft <= 0 || this.ballRight >= this.widthCanvas) {
-                    this.speedX = -this.speedX;
-                }
-                if (this.ballTop <= 0 || this.ballBottom >= this.scrollBarY) {
-                    this.speedY = -this.speedY
-                }
-            }
-        }
-        let ball = new Ball(400, 400, 10);
-        ball.drawBall();
-
-        function update() {
-            ball.moveBall();
-            ball.checkCollision();
-            ball.drawBall()
-        }
-        setInterval(update,100)
+    <div class="container">
+        <canvas id="myCanvas" width="500px" height="500px"
+            style="background: #493323; border: 1px solid black"></canvas>
         
-    </script>
+        <div id="content">
+            <button id="startGame">PLAY</button>
+            <input type="text" id="speed" placeholder="Chọn tốc độ bóng (50-100)">
+            <p><span id="scores">0</span></p>
+            <hr>
+            <p id="playGame">Nhấn PLAY để bắt đầu</p>
+            <br>
+            <div id="instruct">
+                <h3>Hướng dẫn</h3>
+                <span> Nhấn phím </span>
+                <i class="fas fa-caret-square-left"></i>
+                <span> - </span>
+                <i class="fas fa-caret-square-right"></i>
+                <span> hoặc A - D</span>
+                <p>để di chuyển thanh trượt</p>
+                <br> <br>
+                <span> Nhấn phím </span>
+                <i class="fas fa-caret-square-up"></i>
+                <span> - </span>
+                <i class="fas fa-caret-square-down"></i>
+                <span> hoặc S - W</span>
+                <p>để tạm dừng hoặc chơi tiếp</p>
+            </div>
+
+        </div>
+        <div id="audio"></div>
+        
+    </div>
+
+    <script type="text/javascript" src="obj.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 </body>
 
 </html>
