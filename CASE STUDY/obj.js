@@ -21,7 +21,6 @@ class Bar {
         ctx.fillStyle = "#FFDF91";
         ctx.fillRect(this.barX, this.barY, this.widthBar, this.heightBar);
     }
-
     moveRight() {
         ctx.clearRect(this.barX, this.barY, this.widthBar, this.heightBar);
         return this.barX += this.distanceBar;
@@ -40,7 +39,6 @@ class Ball {
         this.ballX = bar.barX + bar.widthBar / 2;
         this.ballY = bar.barY - this.radius;
     }
-
     drawBall() {
         ctx.beginPath();
         ctx.arc(this.ballX, this.ballY, this.radius, 0, 2 * Math.PI, true);

@@ -9,30 +9,30 @@ let countTime;
 
 startGame.addEventListener('click', function () {
     startGame.innerText = 'START';
-    playGame.innerText = "Chọn tốc độ bóng, sau đó nhấn START để bắt đầu";
+    playGame.innerHTML = "Chọn tốc độ bóng, <br> sau đó nhấn START để bắt đầu";
     speed.style.display = 'block';
 });
 startGame.addEventListener('click', function () {
     if (chooseSpeed()) {
         playGameStart()
     } else speed.value = '';
-})
+});
+
+function chooseSpeed() {
+    speedInput = speed.value;
+    speedBall = parseFloat(speedInput);
+    if ((speedBall != speedInput || speedBall < 50 ||
+            speedBall > 100 || speedBall == null)) {
+        speed.value = '';
+    } else return true
+};
 
 function playGameStart() {
     startGame.style.display = 'none';
     speed.style.display = 'none';
     playGame.innerText = "";
     start();
-}
-
-function chooseSpeed() {
-    speedInput = speed.value;
-    speedBall = parseFloat(speedInput);
-    if ((speedBall != speedInput || speedBall < 50 ||
-        speedBall > 100 || speedBall == null)) {
-        speed.value = '';
-    } else return true
-}
+};
 
 function btnRestart() {
     startGame.innerText = 'TIẾP TỤC'
@@ -41,54 +41,53 @@ function btnRestart() {
     startGame.addEventListener('click', function () {
         location.reload();
     })
-}
+};
 
 function start() {
     bar.drawBar();
     ball.drawBall();
-    audio.innerHTML = '<audio loop autoplay source src="audio/Game-Boom-online.mp3" type="audio/mp3"></audio>'
+    audio.innerHTML = '<audio loop autoplay source src="audio/Game-Boom-online.mp3" type="audio/mp3"></audio>';
 
-
-    function update() {
-        isPlay = checkPlay()
-        if (isPlay) {
-            ball.moveBall();
-            ball.checkCollision();
-            ball.drawBall()
-        } else pause()
-    }
-
-    function displayScores() {
-        time++
-        speedBall--
-        scores.innerHTML = time;
-    }
-    play()
+    play();
 
     function play() {
         isPlay = true;
-        countTime = setInterval(displayScores, 1000)
+        countTime = setInterval(displayScores, 1000);
         interval = setInterval(update, speedBall);
-        audio.innerHTML = '<audio loop autoplay source src="audio/Game-Boom-online.mp3" type="audio/mp3"></audio>'
-    }
+        audio.innerHTML = '<audio loop autoplay source src="audio/Game-Boom-online.mp3" type="audio/mp3"></audio>';
+    };
+
+    function update() {
+        isPlay = checkPlay();
+        if (isPlay) {
+            ball.moveBall();
+            ball.checkCollision();
+            ball.drawBall();
+        } else pause();
+    };
+
+    function displayScores() {
+        time++;
+        speedBall--;
+        scores.innerHTML = time;
+    };
 
     function pause() {
         isPlay = false;
         clearInterval(interval);
         clearInterval(countTime);
         audio.innerHTML = '';
-    }
+    };
 
     function checkPlay() {
         if (ball.distanceX == 0 && ball.distanceX == 0) {
             setTimeout(endGame, 500);
-            return false
-        } else return true
-    }
+            return false;
+        } else return true;
+    };
 
     function endGame() {
-        console.log(isPlay)
-        myCanvas.innerHTML = audio.innerHTML = '<audio autoplay source src="audio/Mario.mp3" type="audio/mp3"></audio>'
+        myCanvas.innerHTML = audio.innerHTML = '<audio autoplay source src="audio/Mario.mp3" type="audio/mp3"></audio>';
         ctx.beginPath();
         ctx.fillStyle = "#FFDF91"
         ctx.fillRect(150, 80, 210, 220);
