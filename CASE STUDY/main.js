@@ -6,7 +6,7 @@ let speedInput = 0;
 let interval;
 let time = 0;
 let countTime;
-let winScores = 10;  //thay đổi theo yêu cầu
+let winScores = 60;  //thay đổi theo yêu cầu
 let textEnd = 'KẾT THÚC!';
 
 startGame.addEventListener('click', function () {
