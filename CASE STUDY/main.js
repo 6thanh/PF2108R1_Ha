@@ -6,8 +6,8 @@ let speedInput = 0;
 let interval;
 let time = 0;
 let countTime;
-let win = 10;  //thay đổi theo yêu cầu
-let textWin = 'KẾT THÚC!';
+let winScores = 10;  //thay đổi theo yêu cầu
+let textEnd = 'KẾT THÚC!';
 
 startGame.addEventListener('click', function () {
     startGame.innerText = 'START';
@@ -17,7 +17,10 @@ startGame.addEventListener('click', function () {
 startGame.addEventListener('click', function () {
     if (chooseSpeed()) {
         playGameStart()
-    } else speed.value = '';
+    } else {
+        speed.value = '';
+        console.log("Tốc độ là số từ 50-100")
+    }
 });
 
 // ========= chọn tốc độ ==========
@@ -26,14 +29,14 @@ function chooseSpeed() {
     speedBall = parseFloat(speedInput);
     if ((speedBall != speedInput || speedBall < 50 ||
             speedBall > 100 || speedBall == null)) {
-        speed.value = '';
+        return false
     } else return true
 };
 
 function playGameStart() {
     startGame.style.display = 'none';
     speed.style.display = 'none';
-    playGame.innerHTML = 'Chiến thắng nếu được <strong style= "color:red">' + win + '</strong> điểm';
+    playGame.innerHTML = 'Chiến thắng nếu được <strong style= "color:red">' + winScores + '</strong> điểm';
     start();
 };
 
@@ -89,27 +92,27 @@ function start() {
         if (ball.distanceX == 0 && ball.distanceX == 0) {
             pause();
             myCanvas.innerHTML = audio.innerHTML = '<audio autoplay source src="audio/Mario.mp3" type="audio/mp3"></audio>';
-            setTimeout(endGame(textWin,'blue'), 500);
+            setTimeout(endGame(textEnd,'blue'), 500);
             return false
         } else return true       
     };
 
     function checkWin(){
-        if (time == win) {
-            textWin = 'CHÚC MỪNG!';
+        if (time == winScores) {
+            textEnd = 'CHÚC MỪNG!';
             pause();
-            myCanvas.innerHTML = '<audio autoplay source src="audio/Win.mp3" type="audio/mp3"></audio>';
-            setTimeout(endGame(textWin,'red'), 500);
+            myCanvas.innerHTML = '<audio autoplay source src="audio/winScores.mp3" type="audio/mp3"></audio>';
+            setTimeout(endGame(textEnd,'red'), 500);
         }
     }
 // ========== thông báo kết thúc ==========
-    function endGame(textWin,color) {
+    function endGame(textEnd,color) {
         ctx.beginPath();
         ctx.fillStyle = "#FFDF91"
         ctx.fillRect(150, 80, 210, 220);
         ctx.fillStyle = color;
         ctx.font = '25px serif';
-        ctx.fillText(textWin, widthCanvas / 2 - 65, heightCanvas / 2 - 120);
+        ctx.fillText(textEnd, widthCanvas / 2 - 65, heightCanvas / 2 - 120);
         ctx.fillStyle = "blue";
         ctx.font = '20px serif';
         ctx.fillText("Điểm của bạn là: " + time, widthCanvas / 2 - 80, heightCanvas / 2 - 80);
